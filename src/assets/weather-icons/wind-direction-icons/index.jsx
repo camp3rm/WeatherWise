@@ -4,6 +4,6 @@ const importAll = (r) => {
 		wind[key.replace('./', '')] = r(key);
 	});
 	return wind;
-
 }
-export const WindDirection = importAll(require.context('../assets/weather-icons/wind-direction', false, /\.(png|jpe?g|svg)$/));
+export const windDirectionIcons = importAll(require.context('../wind-direction-icons', false, /\.(png|jpe?g|svg)$/));
+

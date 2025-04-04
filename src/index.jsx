@@ -1,19 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import './index.scss';
 import reportWebVitals from './reportWebVitals';
-import Main from './components/Main/Main';
-import Header from "./components/Header/Header";
-import { FetchingDataProvider } from "./components/FetchingAPI/FetchingData";
-
+import Main from '@components/Main/Main';
+import Header from "@components/Header/Header";
+import Footer from "@components/Footer/Footer"
+import { DataProvider } from "./FetchingAPI/FetchingWeatherData";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <FetchingDataProvider>
+    <DataProvider>
       <Header />
       <Main />
-    </FetchingDataProvider>
+      <Footer />
+    </DataProvider>
   </React.StrictMode>
 );
 
