@@ -11,7 +11,7 @@ import thunderstorm from "./thunderstorm.png";
 import snow from "./snow.png";
 import mist from "./mist.png";
 
-export const weatherConditionIcons = {
+export const weatherConditionImages = {
 	"01d": clear_sky_d,
 	"01n": clear_sky_n,
 	"02d": few_clouds_d,

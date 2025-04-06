@@ -1,63 +1,64 @@
 import React from "react";
-import styles from "../main.module.scss";
-import { windDirectionIcons } from "@assets/weather-icons/wind-direction-icons/index.jsx";
+import styles from "../components/Main/main.module.scss";
+import axios from "axios";
+import { windDirectionImages } from "@assets/weather-images/wind-direction-images/index.jsx";
+
+const API_KEY = "f9db56c6edd22f0c7a44a291f2d6d8a4";
 export const GetWindDirection = ({ wind_deg }) => {
 	if (wind_deg >= 0 && wind_deg < 23) {
 		return (
 			<div className={styles.wind_direction_description}>
-				<span>N</span><img className={styles.wind_direction_icon} src={windDirectionIcons['north.png']} alt="North Direction" />
+				<span>N</span><img className={styles.wind_direction_icon} src={windDirectionImages['north.png']} alt="North Direction" />
 			</div>
 		);
 	} else if (wind_deg >= 23 && wind_deg < 68) {
 		return (
 			<div className={styles.wind_direction_description}>
-				<span>NE</span><img className={styles.wind_direction_icon} src={windDirectionIcons['north-east.png']} alt="North-East Direction" />
+				<span>NE</span><img className={styles.wind_direction_icon} src={windDirectionImages['north-east.png']} alt="North-East Direction" />
 			</div>
 		);
 	} else if (wind_deg >= 68 && wind_deg < 113) {
 		return (
 			<div className={styles.wind_direction_description}>
-				<span>E</span><img className={styles.wind_direction_icon} src={windDirectionIcons['east.png']} alt="East Direction" />
+				<span>E</span><img className={styles.wind_direction_icon} src={windDirectionImages['east.png']} alt="East Direction" />
 			</div>
 		);
 	} else if (wind_deg >= 113 && wind_deg < 158) {
 		return (
 			<div className={styles.wind_direction_description}>
-				<span>SE</span><img className={styles.wind_direction_icon} src={windDirectionIcons['south-east.png']} alt="South-East Direction" />
+				<span>SE</span><img className={styles.wind_direction_icon} src={windDirectionImages['south-east.png']} alt="South-East Direction" />
 			</div>
 		);
 	} else if (wind_deg >= 158 && wind_deg < 203) {
 		return (
 			<div className={styles.wind_direction_description}>
-				<span>S</span><img className={styles.wind_direction_icon} src={windDirectionIcons['south.png']} alt="South Direction" />
+				<span>S</span><img className={styles.wind_direction_icon} src={windDirectionImages['south.png']} alt="South Direction" />
 			</div>
 		);
 	} else if (wind_deg >= 203 && wind_deg < 248) {
 		return (
 			<div className={styles.wind_direction_description}>
-				<span>SW</span><img className={styles.wind_direction_icon} src={windDirectionIcons['south-west.png']} alt="South-West Direction" />
+				<span>SW</span><img className={styles.wind_direction_icon} src={windDirectionImages['south-west.png']} alt="South-West Direction" />
 			</div>
 		);
 	} else if (wind_deg >= 248 && wind_deg < 293) {
 		return (
 			<div className={styles.wind_direction_description}>
-				<span>W</span><img className={styles.wind_direction_icon} src={windDirectionIcons['west.png']} alt="West Direction" />
+				<span>W</span><img className={styles.wind_direction_icon} src={windDirectionImages['west.png']} alt="West Direction" />
 			</div>
 		);
 	} else if (wind_deg >= 293 && wind_deg < 338) {
 		return (
 			<div className={styles.wind_direction_description}>
-				<span>NW</span><img className={styles.wind_direction_icon} src={windDirectionIcons['north-west.png']} alt="North-West Direction" />
-			</div>
-		);
-	} else if (wind_deg >= 338) {
-		return (
-			<div className={styles.wind_direction_description}>
-				<span>N</span><img className={styles.wind_direction_icon} src={windDirectionIcons['north.png']} alt="North Direction" />
+				<span>NW</span><img className={styles.wind_direction_icon} src={windDirectionImages['north-west.png']} alt="North-West Direction" />
 			</div>
 		);
 	} else {
-		return;
+		return (
+			<div className={styles.wind_direction_description}>
+				<span>N</span><img className={styles.wind_direction_icon} src={windDirectionImages['north.png']} alt="North Direction" />
+			</div>
+		);
 	};
 };
 
@@ -87,18 +88,16 @@ export const Cloudly = ({ cloudies }) => {
 				<p className={styles.clouds}>Broken clouds</p>
 			</div>
 		)
-	} else if (cloudies > 84) {
+	} else {
 		return (
 			<div>
 				<p className={styles.clouds}>Overcast</p>
 			</div>
 		)
-	} else {
-		return;
-	}
+	};
 };
 export const UVIndex = ({ uvi }) => {
-	if (0 < uvi && uvi <= 3) {
+	if (0 <= uvi && uvi <= 3) {
 		return (
 			<div className={styles.risk_of_harm_box}>
 				<p className={styles.risk_of_harm}>Low</p>
@@ -122,15 +121,13 @@ export const UVIndex = ({ uvi }) => {
 				<p className={styles.risk_of_harm}>Very high</p>
 			</div>
 		)
-	} else if (uvi > 11) {
+	} else {
 		return (
 			<div className={styles.risk_of_harm_box}>
 				<p className={styles.risk_of_harm}>Extreme</p>
 			</div>
 		)
-	} else {
-		return;
-	}
+	};
 }
 export const UVIColorCodding = ({ uvi }) => {
 	if (0 <= uvi && uvi < 3) {
@@ -141,12 +138,10 @@ export const UVIColorCodding = ({ uvi }) => {
 		return 'orange'
 	} else if (8 <= uvi && uvi < 11) {
 		return 'red'
-	} else if (uvi >= 11) {
-		return 'violet'
 	} else {
-		return;
-	}
-}
+		return 'violet'
+	};
+};
 export const HumidityLevel = ({ humidity }) => {
 	if (humidity <= 20) {
 		return (
@@ -172,7 +167,7 @@ export const HumidityLevel = ({ humidity }) => {
 		return (
 			<p className={styles.humidity_level}>Too High</p>
 		)
-	} else if (humidity > 70) {
+	} else {
 		return (
 			<p className={styles.humidity_level}>Critically High</p>
 		)
@@ -206,10 +201,30 @@ export const PressureLevel = ({ humidity }) => {
 	} else if (1020 < humidity && humidity <= 1040) {
 		return (
 			<p className={styles.pressure_level} >High pressure</p>)
-	} else if (humidity > 1040) {
+	} else {
 		return (
 			<p className={styles.pressure_level} >Very high pressure</p>)
-	} else {
-		return;
 	};
 };
+
+export const GetCurrentCoordinates = async () =>
+	new Promise((resolve, reject) => {
+		navigator.geolocation.getCurrentPosition(
+			(position) => {
+				resolve(position.coords)
+			},
+			(error) => reject(error)
+		);
+	});
+
+export const GetCurrentCity = async ({ latitude, longitude }) => {
+	const response = await axios.get(`http://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=5&appid=${API_KEY}`);
+	return response.data[0].name
+}
+
+export const GetCoordinates = async (value) => {
+	const geoUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${value}&limit=5&appid=${API_KEY}`;
+	const response = await axios.get(geoUrl);
+	return response.data?.[0]
+};
+

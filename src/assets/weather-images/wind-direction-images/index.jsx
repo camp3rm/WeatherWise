@@ -5,5 +5,5 @@ const importAll = (r) => {
 	});
 	return wind;
 }
-export const windDirectionIcons = importAll(require.context('../wind-direction-icons', false, /\.(png|jpe?g|svg)$/));
+export const windDirectionImages = importAll(require.context('../wind-direction-images', false, /\.(png|jpe?g|svg)$/));
 
