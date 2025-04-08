@@ -13,7 +13,7 @@ export const DataProvider = ({ children }) => {
 			invalidFetchingData: false,
 		}
 	);
-	const [isLoading, setIsLoading] = useState(false);
+	const [isLoading, setIsLoading] = useState(true);
 	const [searchCity, setSearchCity] = useState(null);
 
 	useEffect(() => {
@@ -21,9 +21,11 @@ export const DataProvider = ({ children }) => {
 
 			try {
 				const position = await GetCurrentCoordinates()
-				fetchWeather({ latitude: position.latitude, longitude: position.longitude })
+				await fetchWeather({ latitude: position.latitude, longitude: position.longitude })
 			} catch (error) {
-				fetchWeather({ latitude: 52.232, longitude: 21.0067 })
+				await fetchWeather({ latitude: 52.232, longitude: 21.0067 })
+			} finally {
+				setIsLoading(false);
 			}
 		}
 		getFetchingData()
@@ -64,8 +66,6 @@ export const DataProvider = ({ children }) => {
 				const [weatherData, cityData] = await Promise.allSettled(
 					[await axios.get(weatherUrl), await GetCurrentCity({ latitude: lat, longitude: lon })]
 				);
-				console.log(weatherData.value.data);
-
 				if (weatherData.status === "rejected" && cityData.status === "rejected") {
 					setModalWindow(prev => ({ ...prev, invalidFetchingData: true }))
 					return <Loader />

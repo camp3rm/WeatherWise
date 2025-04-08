@@ -353,6 +353,7 @@
 					flex-direction: column;
 					align-items: center;
 					border-radius: 0.3125rem;
+					padding: 0.625rem 0;
 
 					& .daily_forecast_date,
 					& .daily_forecast_temp,
@@ -410,10 +411,10 @@
 				list-style: none;
 				display: flex;
 				flex-direction: row;
-				height: 12.5rem;
-				width: 100%;
 				overflow-x: scroll;
+				overflow-y: hidden;
 				scrollbar-width: none;
+
 
 				& :hover {
 					background-color: #2b69af;
@@ -421,7 +422,6 @@
 				}
 
 				& .hourly_forecast_item {
-					height: auto;
 					flex: 0 0 auto;
 					list-style: none;
 					display: flex;
@@ -714,19 +714,22 @@
 				grid-column: 1/3;
 				grid-row: 4/5;
 				margin-top: 0.9375rem;
+				height: 11.25rem;
 
 				.hourly_forecast_list_items {
 					border-top: 2.5rem solid rgb(56, 181, 223);
-					height: 10.9375rem;
+					height: 100%;
 
 					.hourly_forecast_item {
 						margin-top: 0.9375rem;
+
 
 						.hourly_forecast_date,
 						.hourly_forecast_temp {
 							margin-bottom: 0;
 							margin-top: 0;
 							font-size: 13px;
+							margin: 0.3125rem 0.3125rem;
 						}
 
 						.hourly_forecast_icon {
@@ -1004,19 +1007,22 @@
 
 			.weather_forecast_hourly {
 				margin-top: 0.9375rem;
+				height: 14.6875rem;
 
 				.hourly_forecast_list_items {
 					border-top: 2.5rem solid rgb(56, 181, 223);
-					height: 15.625rem;
+					height: 100%;
 
 					.hourly_forecast_item {
 						margin-top: 0.9375rem;
+
 
 						.hourly_forecast_date,
 						.hourly_forecast_temp {
 							margin-bottom: 0;
 							margin-top: 0;
 							font-size: 22px;
+							margin: 0.3125rem 0.3125rem;
 						}
 
 						.hourly_forecast_icon {
@@ -1268,16 +1274,18 @@
 
 				.hourly_forecast_list_items {
 					border-top: 2.5rem solid rgb(56, 181, 223);
-					height: 15rem;
+					height: 15.625rem;
 
 					.hourly_forecast_item {
 						margin-top: 0.9375rem;
+						height: 85%;
 
 						.hourly_forecast_date,
 						.hourly_forecast_temp {
 							margin-bottom: 0;
 							margin-top: 0;
 							font-size: 20px;
+							margin: 0.3125rem 0.3125rem;
 						}
 
 						.hourly_forecast_icon {
@@ -1389,7 +1397,7 @@
 					}
 
 					.wind_direction_box {
-						margin-bottom: 7.5px;
+						margin-bottom: 0.4688rem;
 
 						img {
 							display: none;
@@ -1404,17 +1412,20 @@
 				.hourly_forecast_list_items {
 					border-top: 2.5rem solid rgb(56, 181, 223);
 					margin-bottom: 1.5625rem;
-					height: 15.625rem;
+					height: 16.25rem;
 
 					.hourly_forecast_item {
 						margin-top: 0.9375rem;
 						margin-bottom: 1.5625rem;
+						height: 100%;
+
 
 						.hourly_forecast_date,
 						.hourly_forecast_temp {
 							margin-bottom: 0;
 							margin-top: 0;
 							font-size: 25px;
+							margin: 0.3125rem 0.3125rem;
 						}
 
 						.hourly_forecast_icon {
@@ -1468,8 +1479,8 @@
 				}
 
 				.search_button {
-					width: 55px;
-					height: 55px;
+					width: 3.4375rem;
+					height: 3.4375rem;
 				}
 			}
 		}
@@ -1604,17 +1615,19 @@
 				.hourly_forecast_list_items {
 					border-top: 2.5rem solid rgb(56, 181, 223);
 					margin-bottom: 1.5625rem;
-					height: 15.625rem;
+					height: 17.1875rem;
 
 					.hourly_forecast_item {
 						margin-top: 0.9375rem;
 						margin-bottom: 1.5625rem;
+						height: 90%;
 
 						.hourly_forecast_date,
 						.hourly_forecast_temp {
 							margin-bottom: 0;
 							margin-top: 0;
 							font-size: 25px;
+							margin: 0.3125rem 0.3125rem;
 						}
 
 						.hourly_forecast_icon {

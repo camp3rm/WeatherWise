@@ -1,13 +1,13 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.scss';
 import reportWebVitals from './reportWebVitals';
 import Loader from "@components/Loader/Loader";
+import Header from "@components/Header/Header";
+import Main from "@components/Main/Main";
+import Footer from "@components/Footer/Footer";
 import { DataProvider } from "./FetchingAPI/FetchingWeatherData";
 
-const Header = lazy(() => import("@components/Header/Header"));
-const Main = lazy(() => import("@components/Main/Main"));
-const Footer = lazy(() => import("@components/Footer/Footer"));
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

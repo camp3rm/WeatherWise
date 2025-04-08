@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, useRef } from "react";
+import React, { useContext, useState } from "react";
 import { DataContext } from "@FetchingAPI/FetchingWeatherData";
 import styles from "./main.module.scss";
 import search_icon from "@assets/search-icon.svg";
@@ -52,6 +52,10 @@ const Main = () => {
 		return (
 			<Loader />
 		);
+		// 	if ( !weatherData) {
+		// 		return (
+		// 			ModalWindow
+		// 		);
 	}
 	const { current, daily, hourly } = weatherData;
 	return (

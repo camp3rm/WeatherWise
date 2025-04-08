@@ -1,10 +1,10 @@
 import React from "react";
 import { currentWeatherImages } from "@assets/weather-images/current-weather-images/index.jsx";
-import { GetWindDirection, UVIndex, UVIColorCodding, HumidityLevel, VisibilityLevel, PressureLevel } from "@utils/AdditionalData";
+import { GetWindDirection, UVIndex, UVIColorCoding, HumidityLevel, VisibilityLevel, PressureLevel } from "@utils/AdditionalData";
 import styles from "../main.module.scss";
 
 export const AdditionalInformation = ({ current, daily }) => {
-	const UVIColorClass = UVIColorCodding({ uvi: daily[0].uvi });
+	const UVIColorClass = UVIColorCoding({ uvi: daily[0].uvi });
 	const sunriseTime = new Date(current.sunrise * 1000).toLocaleTimeString("uk-UA", {
 		hour: "2-digit",
 		minute: "2-digit",

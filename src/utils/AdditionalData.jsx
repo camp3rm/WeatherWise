@@ -2,209 +2,59 @@ import React from "react";
 import styles from "../components/Main/main.module.scss";
 import axios from "axios";
 import { windDirectionImages } from "@assets/weather-images/wind-direction-images/index.jsx";
-
+import { pressureLevels, humidityLevels, uvLevels, visibilityLevels, cloudinessLevels, windDirections } from "./weatherParameters.jsx";
 const API_KEY = "f9db56c6edd22f0c7a44a291f2d6d8a4";
-export const GetWindDirection = ({ wind_deg }) => {
-	if (wind_deg >= 0 && wind_deg < 23) {
-		return (
-			<div className={styles.wind_direction_description}>
-				<span>N</span><img className={styles.wind_direction_icon} src={windDirectionImages['north.png']} alt="North Direction" />
-			</div>
-		);
-	} else if (wind_deg >= 23 && wind_deg < 68) {
-		return (
-			<div className={styles.wind_direction_description}>
-				<span>NE</span><img className={styles.wind_direction_icon} src={windDirectionImages['north-east.png']} alt="North-East Direction" />
-			</div>
-		);
-	} else if (wind_deg >= 68 && wind_deg < 113) {
-		return (
-			<div className={styles.wind_direction_description}>
-				<span>E</span><img className={styles.wind_direction_icon} src={windDirectionImages['east.png']} alt="East Direction" />
-			</div>
-		);
-	} else if (wind_deg >= 113 && wind_deg < 158) {
-		return (
-			<div className={styles.wind_direction_description}>
-				<span>SE</span><img className={styles.wind_direction_icon} src={windDirectionImages['south-east.png']} alt="South-East Direction" />
-			</div>
-		);
-	} else if (wind_deg >= 158 && wind_deg < 203) {
-		return (
-			<div className={styles.wind_direction_description}>
-				<span>S</span><img className={styles.wind_direction_icon} src={windDirectionImages['south.png']} alt="South Direction" />
-			</div>
-		);
-	} else if (wind_deg >= 203 && wind_deg < 248) {
-		return (
-			<div className={styles.wind_direction_description}>
-				<span>SW</span><img className={styles.wind_direction_icon} src={windDirectionImages['south-west.png']} alt="South-West Direction" />
-			</div>
-		);
-	} else if (wind_deg >= 248 && wind_deg < 293) {
-		return (
-			<div className={styles.wind_direction_description}>
-				<span>W</span><img className={styles.wind_direction_icon} src={windDirectionImages['west.png']} alt="West Direction" />
-			</div>
-		);
-	} else if (wind_deg >= 293 && wind_deg < 338) {
-		return (
-			<div className={styles.wind_direction_description}>
-				<span>NW</span><img className={styles.wind_direction_icon} src={windDirectionImages['north-west.png']} alt="North-West Direction" />
-			</div>
-		);
-	} else {
-		return (
-			<div className={styles.wind_direction_description}>
-				<span>N</span><img className={styles.wind_direction_icon} src={windDirectionImages['north.png']} alt="North Direction" />
-			</div>
-		);
-	};
+export const PressureLevel = ({ pressure }) => {
+	const level = pressureLevels.find(({ min, max }) => pressure >= min && pressure < max);
+	return <p className={styles.pressure_level}>{level?.label || "Unknown pressure"}</p>;
 };
 
-export const Cloudly = ({ cloudies }) => {
 
-	if (cloudies < 11) {
-		return (
-			<div>
-				<p className={styles.clouds}>Cloudless</p>
-			</div>
-		)
-	} else if (cloudies > 11 && cloudies < 25) {
-		return (
-			<div>
-				<p className={styles.clouds}>Few clouds</p>
-			</div>
-		)
-	} else if (cloudies > 25 && cloudies < 50) {
-		return (
-			<div>
-				<p className={styles.clouds}>Scattered clouds</p>
-			</div>
-		)
-	} else if (cloudies > 50 && cloudies < 84) {
-		return (
-			<div>
-				<p className={styles.clouds}>Broken clouds</p>
-			</div>
-		)
-	} else {
-		return (
-			<div>
-				<p className={styles.clouds}>Overcast</p>
-			</div>
-		)
-	};
-};
-export const UVIndex = ({ uvi }) => {
-	if (0 <= uvi && uvi <= 3) {
-		return (
-			<div className={styles.risk_of_harm_box}>
-				<p className={styles.risk_of_harm}>Low</p>
-			</div>
-		)
-	} else if (3 < uvi && uvi <= 6) {
-		return (
-			<div className={styles.risk_of_harm_box}>
-				<p className={styles.risk_of_harm}>Moderate</p>
-			</div>
-		)
-	} else if (6 < uvi && uvi <= 8) {
-		return (
-			<div className={styles.risk_of_harm_box}>
-				<p className={styles.risk_of_harm}>High</p>
-			</div>
-		)
-	} else if (8 < uvi && uvi <= 11) {
-		return (
-			<div className={styles.risk_of_harm_box}>
-				<p className={styles.risk_of_harm}>Very high</p>
-			</div>
-		)
-	} else {
-		return (
-			<div className={styles.risk_of_harm_box}>
-				<p className={styles.risk_of_harm}>Extreme</p>
-			</div>
-		)
-	};
-}
-export const UVIColorCodding = ({ uvi }) => {
-	if (0 <= uvi && uvi < 3) {
-		return 'green'
-	} else if (3 <= uvi && uvi < 6) {
-		return 'yellow'
-	} else if (6 <= uvi && uvi < 8) {
-		return 'orange'
-	} else if (8 <= uvi && uvi < 11) {
-		return 'red'
-	} else {
-		return 'violet'
-	};
-};
 export const HumidityLevel = ({ humidity }) => {
-	if (humidity <= 20) {
-		return (
-			<p className={styles.humidity_level}>Critically Low</p>
-		)
-	} else if (humidity > 20 && humidity <= 30) {
-		return (
-			<p className={styles.humidity_level}>Too Low</p>
-		)
-	} else if (humidity > 30 && humidity <= 40) {
-		return (
-			<p className={styles.humidity_level}>Lower bound</p>
-		)
-	} else if (humidity > 40 && humidity <= 50) {
-		return (
-			<p className={styles.humidity_level}>Comfortable</p>
-		)
-	} else if (humidity > 50 && humidity <= 60) {
-		return (
-			<p className={styles.humidity_level}>Comfortable (in Summer)</p>
-		)
-	} else if (humidity > 60 && humidity <= 70) {
-		return (
-			<p className={styles.humidity_level}>Too High</p>
-		)
-	} else {
-		return (
-			<p className={styles.humidity_level}>Critically High</p>
-		)
-	}
-}
+	const level = humidityLevels.find(({ min, max }) => humidity >= min && humidity < max);
+	return <p className={styles.humidity_level}>{level?.label || "Unknown humidity"}</p>;
+};
+
+export const UVIndex = ({ uvi }) => {
+	const level = uvLevels.find(({ min, max }) => uvi >= min && uvi < max);
+	return (
+		<div className={styles.risk_of_harm_box}>
+			<p className={styles.risk_of_harm}>{level?.label || "Unknown"}</p>
+		</div>
+	);
+};
+
+export const UVIColorCoding = ({ uvi }) => {
+	const level = uvLevels.find(({ min, max }) => uvi >= min && uvi < max);
+	return level?.color || "gray";
+};
+
 export const VisibilityLevel = ({ visibility }) => {
 	const visibilityInKm = visibility / 1000;
-
-	if (visibilityInKm > 10) {
-		return <p className={styles.visibility_level}>Clear</p>;
-	} else if (visibilityInKm >= 5) {
-		return <p className={styles.visibility_level}>Good</p>;
-	} else if (visibilityInKm >= 1) {
-		return <p className={styles.visibility_level}>Average</p>;
-	} else if (visibilityInKm >= 0.5) {
-		return <p className={styles.visibility_level}>Poor</p>;
-	} else {
-		return <p className={styles.visibility_level}>Dangerous</p>;
-	}
+	const level = visibilityLevels.find(({ min, max }) => visibilityInKm >= min && visibilityInKm < max);
+	return <p className={styles.visibility_level}>{level?.label || "Unknown visibility"}</p>;
 };
-export const PressureLevel = ({ humidity }) => {
-	if (humidity <= 980) {
-		return (
-			<p className={styles.pressure_level} >Very low pressure</p>)
-	} else if (humidity > 980 && humidity <= 1010) {
-		return (
-			<p className={styles.pressure_level} >Low pressure</p>)
-	} else if (1010 < humidity && humidity <= 1020) {
-		return (
-			<p className={styles.pressure_level} >Normal pressure</p>)
-	} else if (1020 < humidity && humidity <= 1040) {
-		return (
-			<p className={styles.pressure_level} >High pressure</p>)
-	} else {
-		return (
-			<p className={styles.pressure_level} >Very high pressure</p>)
-	};
+
+export const CloudinessLevel = ({ cloudies }) => {
+	const level = cloudinessLevels.find(({ min, max }) => cloudies >= min && cloudies < max);
+	return <p className={styles.clouds}>{level?.label || "Unknown cloudiness"}</p>;
+};
+
+export const GetWindDirection = ({ wind_deg }) => {
+	const direction = windDirections.find(({ min, max }) => wind_deg >= min && wind_deg < max);
+	const label = direction?.label || "N";
+	const image = direction?.image || "north.png";
+
+	return (
+		<div className={styles.wind_direction_description}>
+			<span>{label}</span>
+			<img
+				className={styles.wind_direction_icon}
+				src={windDirectionImages[image]}
+				alt={`Wind from the ${label}`}
+			/>
+		</div>
+	);
 };
 
 export const GetCurrentCoordinates = async () =>
