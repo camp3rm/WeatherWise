@@ -16,13 +16,16 @@
 		flex-direction: row;
 		justify-content: flex-start;
 		align-items: center;
-		background-color: #dfdede;
+		background: linear-gradient(to right, rgba(20, 20, 20, 0.6), rgba(40, 40, 40, 0.3));
+		backdrop-filter: blur(4px);
+		padding: 1rem;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
-		.app_name {
+		& .app_name {
 			font-family: 'Bree Serif', serif;
 			font-size: clamp(1.5625rem, 3.5vw, 2.5rem);
 			text-align: center;
-			color: rgb(182, 182, 50);
+			color: #dfe6e9;
 			margin-left: 0.3125rem;
 			display: flex;
 			flex-direction: row;
@@ -32,10 +35,6 @@
 				margin: 0 auto;
 				padding: 0;
 				text-align: center;
-
-				& span {
-					color: rgb(105, 92, 92);
-				}
 			}
 
 			.logo {
@@ -43,7 +42,7 @@
 				display: flex;
 				justify-content: center;
 				align-items: center;
-				background-color: #dfdede;
+
 
 				& img {
 					margin-left: 0.9375rem;

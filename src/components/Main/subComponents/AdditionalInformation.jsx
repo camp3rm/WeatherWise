@@ -1,10 +1,9 @@
 import React from "react";
 import { currentWeatherImages } from "@assets/weather-images/current-weather-images/index.jsx";
-import { GetWindDirection, UVIndex, UVIColorCoding, HumidityLevel, VisibilityLevel, PressureLevel } from "@utils/AdditionalData";
+import { GetWindDirection, UVIndex, HumidityLevel, VisibilityLevel, PressureLevel } from "@utils/AdditionalData";
 import styles from "../main.module.scss";
 
 export const AdditionalInformation = ({ current, daily }) => {
-	const UVIColorClass = UVIColorCoding({ uvi: daily[0].uvi });
 	const sunriseTime = new Date(current.sunrise * 1000).toLocaleTimeString("uk-UA", {
 		hour: "2-digit",
 		minute: "2-digit",
@@ -17,7 +16,7 @@ export const AdditionalInformation = ({ current, daily }) => {
 
 	return (
 		<div className={styles.additional_information_container}>
-			<div className={`${styles.uv_index} ${styles[UVIColorClass]}`}>
+			<div className={styles.uv_index}>
 				<h4 className={styles.uv_index_title}>UV Index</h4>
 				<img className={styles.uv_index_icon} src={currentWeatherImages["uvi"]} alt="UV Index" />
 				<span className={styles.daily_value}>{daily[0].uvi}</span>
@@ -60,7 +59,7 @@ export const AdditionalInformation = ({ current, daily }) => {
 				<h4 className={styles.pressure_title}>Pressure</h4>
 				<img className={styles.pressure_icon} src={currentWeatherImages["pressure"]} alt="Pressure" />
 				<p className={styles.pressure_value}>{current.pressure}<span className={styles.pressure_unit}>hPa</span></p>
-				<PressureLevel humidity={current.pressure} />
+				<PressureLevel pressure={current.pressure} />
 			</div>
 		</div>
 	)

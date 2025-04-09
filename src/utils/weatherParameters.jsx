@@ -11,17 +11,17 @@ export const humidityLevels = [
 	{ min: 21, max: 31, label: "Too Low" },
 	{ min: 31, max: 41, label: "Lower bound" },
 	{ min: 41, max: 51, label: "Comfortable" },
-	{ min: 51, max: 61, label: "Comfortable (in Summer)" },
+	{ min: 51, max: 61, label: "Comfortable" },
 	{ min: 61, max: 71, label: "Too High" },
 	{ min: 71, max: Infinity, label: "Critically High" },
 ];
 
 export const uvLevels = [
-	{ min: 0, max: 3, label: "Low", color: "green" },
-	{ min: 3, max: 6, label: "Moderate", color: "yellow" },
-	{ min: 6, max: 8, label: "High", color: "orange" },
-	{ min: 8, max: 11, label: "Very high", color: "red" },
-	{ min: 11, max: Infinity, label: "Extreme", color: "violet" },
+	{ min: 0, max: 3, label: "Low" },
+	{ min: 3, max: 6, label: "Moderate" },
+	{ min: 6, max: 8, label: "High" },
+	{ min: 8, max: 11, label: "Very high" },
+	{ min: 11, max: Infinity, label: "Extreme" },
 ];
 
 export const visibilityLevels = [

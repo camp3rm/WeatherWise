@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { use, useContext, useEffect, useState } from "react";
 import { DataContext } from "@FetchingAPI/FetchingWeatherData";
 import styles from "./main.module.scss";
 import search_icon from "@assets/search-icon.svg";
@@ -6,7 +6,7 @@ import Loader from "@components/Loader/Loader";
 import ModalWindow from "@components/Modal/Modal";
 import { CurrentWeather } from "@components/Main/subComponents/CurrentWeather";
 import { AdditionalInformation } from "@components/Main/subComponents/AdditionalInformation";
-import { DailyWeather } from "@components/Main/subComponents/DayliWeather";
+import { DailyWeather } from "@components/Main/subComponents/DailyWeather";
 import { HourlyWeather } from "@components/Main/subComponents/HourlyWeather";
 
 
@@ -16,6 +16,7 @@ const Main = () => {
 	const [tabIndex, setTabIndex] = useState(1);
 	const { weatherData, isLoading, handleSubmit, searchCity, modalWindow } =
 		useContext(DataContext);
+
 
 	const handleSubmitButton = async (e) => {
 		e.preventDefault();
@@ -40,6 +41,8 @@ const Main = () => {
 		setIsOpen(prev => !prev);
 	};
 
+
+
 	const getModalWindow = () => {
 		if (modalWindow.invalidCityName) return "Please enter a valid city name";
 		if (modalWindow.invalidCoordinates) return "Could not find coordinates. Please check your input or try again later.";
@@ -52,12 +55,15 @@ const Main = () => {
 		return (
 			<Loader />
 		);
-		// 	if ( !weatherData) {
-		// 		return (
-		// 			ModalWindow
-		// 		);
 	}
+
+	// 	if ( !weatherData) {
+	// 		return (
+	// 			ModalWindow
+	// 		);
+
 	const { current, daily, hourly } = weatherData;
+
 	return (
 		<div className={styles.wrapper}>
 			{modalWindowText ? <ModalWindow onClose={onClose} text={modalWindowText} /> :

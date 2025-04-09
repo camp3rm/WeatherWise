@@ -6,34 +6,32 @@ import styles from "../main.module.scss";
 export const CurrentWeather = ({ current, daily }) => {
 	const { weatherData } = useContext(DataContext);
 	const [currentTime, setCurrentTime] = useState("");
-	const getLocalTime = (timezone_offset) => {
-		const nowUtc = Math.floor(Date.now() / 1000);
-		const localTime = new Date((nowUtc + timezone_offset) * 1000);
+
+	const getLocalTime = (dt, timezone_offset) => {
+
+		const localTime = new Date((dt + timezone_offset) * 1000);
 		return localTime.toLocaleTimeString('uk-UA', {
-			hour: "2-digit",
-			minute: "2-digit",
+			hour: '2-digit',
+			minute: '2-digit',
+			timeZone: 'UTC',
 		});
 	};
 
+	const getLocalWeekday = (dt, timezone_offset) => {
+		const localTime = new Date((dt + timezone_offset) * 1000);
+		return localTime.toLocaleDateString('uk-UA', {
+			weekday: 'long',
+			timeZone: 'UTC',
+		});
+	};
 	useEffect(() => {
-		const updateTime = () => {
-			const updatedTime = getLocalTime(weatherData.timezone_offset);
-			setCurrentTime(updatedTime);
-		};
+		if (weatherData?.current?.dt && weatherData?.timezone_offset !== undefined) {
+			const time = getLocalTime(weatherData.current.dt, weatherData.timezone_offset);
+			setCurrentTime(time);
+		}
+	}, [weatherData]);
 
-		updateTime();
-		const interval = setInterval(updateTime, 60000);
-
-		return () => clearInterval(interval);
-	}, [weatherData.timezone_offset]);;
-	const getLocalWeekday = (timezone_offset) => {
-		const nowUtc = Math.floor(Date.now() / 1000);
-		return new Date((nowUtc + timezone_offset) * 1000).toLocaleDateString('en-US', {
-			weekday: "long"
-		});
-	};
-
-	const weekday = getLocalWeekday(weatherData.timezone_offset);
+	const weekday = getLocalWeekday(weatherData.current.dt, weatherData.timezone_offset);
 
 	const icon = weatherConditionImages[current.weather[0].icon];
 	return (

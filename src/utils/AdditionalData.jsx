@@ -24,11 +24,6 @@ export const UVIndex = ({ uvi }) => {
 	);
 };
 
-export const UVIColorCoding = ({ uvi }) => {
-	const level = uvLevels.find(({ min, max }) => uvi >= min && uvi < max);
-	return level?.color || "gray";
-};
-
 export const VisibilityLevel = ({ visibility }) => {
 	const visibilityInKm = visibility / 1000;
 	const level = visibilityLevels.find(({ min, max }) => visibilityInKm >= min && visibilityInKm < max);
