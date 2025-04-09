@@ -342,7 +342,7 @@
 					align-items: center;
 					border-radius: 0.3125rem;
 					padding: 0.625rem 0;
-					margin: 0 0.1563rem;
+					margin: 0 0.1875rem;
 
 					& .daily_forecast_date,
 					& .daily_forecast_temp,
@@ -1584,7 +1584,8 @@
 					margin-bottom: 0;
 
 					.daily_forecast_item {
-						margin: 1.5625rem 0;
+						margin: 1.5625rem 0.1875rem;
+
 
 						.daily_forecast_date,
 						.daily_forecast_temp {
