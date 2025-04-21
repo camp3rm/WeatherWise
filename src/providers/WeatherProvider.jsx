@@ -52,7 +52,7 @@ export const WeatherProvider = ({ children }) => {
 
 		const fetchCompleteWeatherData = async (lat, lon) => {
 			try {
-				const [weatherResponse, cityResponse] = await Promise.all([
+				const [weatherResponse, cityResponse] = await Promise.allSettled([
 					axios.get(weatherUrl),
 					getCurrentCity({ latitude: lat, longitude: lon }, API_KEY),]
 				);
