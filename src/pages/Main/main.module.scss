@@ -6,7 +6,7 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	background-image: url('../../assets/bg-main.jpg');
+	background-image: url('../../assets/mics-images/bg-main.jpg');
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -19,8 +19,9 @@
 		margin: 0 auto;
 		width: 80%;
 		background: rgba(255, 255, 255, 0.1);
-		backdrop-filter: blur(10px);
 		border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+		-webkit-backdrop-filter: blur(10px);
+		backdrop-filter: blur(10px);
 
 		& h2 {
 			font-family: 'Raleway', sans-serif;
@@ -76,6 +77,7 @@
 		height: 100%;
 		display: grid;
 		background: rgba(255, 255, 255, 0.1);
+		-webkit-backdrop-filter: blur(10px);
 		backdrop-filter: blur(10px);
 		color: #dfe6e9;
 		;
@@ -311,6 +313,7 @@
 
 				&:hover {
 					background: rgba(2, 88, 173, 0.6);
+					-webkit-backdrop-filter: blur(10px);
 					backdrop-filter: blur(10px);
 					cursor: pointer;
 				}
@@ -365,6 +368,7 @@
 
 					&:hover {
 						background: rgba(2, 88, 173, 0.6);
+						-webkit-backdrop-filter: blur(10px);
 						backdrop-filter: blur(10px);
 						cursor: pointer;
 					}
@@ -383,11 +387,11 @@
 			overflow-x: hidden;
 
 			& .hourly_forecast_arrow_prev {
-				background-image: url('../../assets/arrow_left.png');
+				background-image: url('../../assets/mics-images/arrow_left.png');
 			}
 
 			& .hourly_forecast_arrow_next {
-				background-image: url('../../assets/arrow_right.png');
+				background-image: url('../../assets/mics-images/arrow_right.png');
 			}
 
 			& .hourly_forecast_arrow_prev,
@@ -409,7 +413,6 @@
 				flex-direction: row;
 				overflow-x: scroll;
 				overflow-y: hidden;
-				scrollbar-width: none;
 
 				& .hourly_forecast_item {
 					flex: 0 0 auto;
@@ -435,6 +438,7 @@
 
 					&:hover {
 						background: rgba(2, 88, 173, 0.6);
+						-webkit-backdrop-filter: blur(10px);
 						backdrop-filter: blur(10px);
 						cursor: pointer;
 					}
@@ -533,21 +537,21 @@
 				}
 
 				.wind_status {
-					background-image: url('../../assets/weather-images/background-image/wind-status.jpg');
+					background-image: url('../../assets/weather-images/background-images/wind-status.jpg');
 					background-repeat: no-repeat;
 					background-position: center;
 					background-size: cover;
 				}
 
 				.day_transition {
-					background-image: url('../../assets/weather-images/background-image/dat-transition.jpg');
+					background-image: url('../../assets/weather-images/background-images/dat-transition.jpg');
 					background-repeat: no-repeat;
 					background-position: center center;
 					background-size: cover;
 				}
 
 				.humidity {
-					background-image: url('../../assets/weather-images/background-image/humidity.jpg');
+					background-image: url('../../assets/weather-images/background-images/humidity.jpg');
 					background-repeat: no-repeat;
 					background-position: center bottom;
 					background-size: cover;
@@ -555,14 +559,14 @@
 
 
 				.visibility {
-					background-image: url('../../assets/weather-images/background-image/visibility.jpg');
+					background-image: url('../../assets/weather-images/background-images/visibility.jpg');
 					background-repeat: no-repeat;
 					background-position: center;
 					background-size: cover;
 				}
 
 				.pressure {
-					background-image: url('../../assets/weather-images/background-image/pressure.jpg');
+					background-image: url('../../assets/weather-images/background-images/pressure.jpg');
 					background-repeat: no-repeat;
 					background-position: center;
 					background-size: cover;
@@ -838,21 +842,21 @@
 				grid-template-rows: repeat(6, 6.25rem);
 
 				.wind_status {
-					background-image: url('../../assets/weather-images/background-image/wind-status.jpg');
+					background-image: url('../../assets/weather-images/background-images/wind-status.jpg');
 					background-repeat: no-repeat;
 					background-position: center;
 					background-size: cover;
 				}
 
 				.day_transition {
-					background-image: url('../../assets/weather-images/background-image/dat-transition.jpg');
+					background-image: url('../../assets/weather-images/background-images/dat-transition.jpg');
 					background-repeat: no-repeat;
 					background-position: center center;
 					background-size: cover;
 				}
 
 				.humidity {
-					background-image: url('../../assets/weather-images/background-image/humidity.jpg');
+					background-image: url('../../assets/weather-images/background-images/humidity.jpg');
 					background-repeat: no-repeat;
 					background-position: center bottom;
 					background-size: cover;
@@ -860,14 +864,14 @@
 
 
 				.visibility {
-					background-image: url('../../assets/weather-images/background-image/visibility.jpg');
+					background-image: url('../../assets/weather-images/background-images/visibility.jpg');
 					background-repeat: no-repeat;
 					background-position: center;
 					background-size: cover;
 				}
 
 				.pressure {
-					background-image: url('../../assets/weather-images/background-image/pressure.jpg');
+					background-image: url('../../assets/weather-images/background-images/pressure.jpg');
 					background-repeat: no-repeat;
 					background-position: center;
 					background-size: cover;
@@ -1102,21 +1106,21 @@
 				grid-template-rows: repeat(6, 6.25rem);
 
 				.wind_status {
-					background-image: url('../../assets/weather-images/background-image/wind-status.jpg');
+					background-image: url('../../assets/weather-images/background-images/wind-status.jpg');
 					background-repeat: no-repeat;
 					background-position: center;
 					background-size: cover;
 				}
 
 				.day_transition {
-					background-image: url('../../assets/weather-images/background-image/dat-transition.jpg');
+					background-image: url('../../assets/weather-images/background-images/dat-transition.jpg');
 					background-repeat: no-repeat;
 					background-position: center center;
 					background-size: cover;
 				}
 
 				.humidity {
-					background-image: url('../../assets/weather-images/background-image/humidity.jpg');
+					background-image: url('../../assets/weather-images/background-images/humidity.jpg');
 					background-repeat: no-repeat;
 					background-position: center bottom;
 					background-size: cover;
@@ -1124,14 +1128,14 @@
 
 
 				.visibility {
-					background-image: url('../../assets/weather-images/background-image/visibility.jpg');
+					background-image: url('../../assets/weather-images/background-images/visibility.jpg');
 					background-repeat: no-repeat;
 					background-position: center;
 					background-size: cover;
 				}
 
 				.pressure {
-					background-image: url('../../assets/weather-images/background-image/pressure.jpg');
+					background-image: url('../../assets/weather-images/background-images/pressure.jpg');
 					background-repeat: no-repeat;
 					background-position: center;
 					background-size: cover;

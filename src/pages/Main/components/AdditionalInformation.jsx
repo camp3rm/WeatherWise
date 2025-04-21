@@ -1,6 +1,6 @@
 import React from "react";
 import { currentWeatherImages } from "@assets/weather-images/current-weather-images/index.jsx";
-import { GetWindDirection, UVIndex, HumidityLevel, VisibilityLevel, PressureLevel } from "@utils/AdditionalData";
+import { GetWindDirection, UVIndex, HumidityLevel, VisibilityLevel, PressureLevel } from "@utils/WeatherUtils";
 import styles from "../main.module.scss";
 
 export const AdditionalInformation = ({ current, daily }) => {

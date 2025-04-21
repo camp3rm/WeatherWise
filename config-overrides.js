@@ -4,9 +4,11 @@ module.exports = function override(config) {
 	config.resolve.alias = {
 		...config.resolve.alias,
 		'@components': path.resolve(__dirname, 'src/components'),
+		'@src': path.resolve(__dirname, 'src'),
+		'@pages': path.resolve(__dirname, 'src/pages'),
 		'@assets': path.resolve(__dirname, 'src/assets'),
 		'@utils': path.resolve(__dirname, 'src/utils'),
-		'@FetchingAPI': path.resolve(__dirname, 'src/FetchingAPI'),
+		'@providers': path.resolve(__dirname, 'src/providers'),
 	};
 	return config;
 };

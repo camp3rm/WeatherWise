@@ -1,9 +1,10 @@
 import React from "react";
-import styles from "../components/Main/main.module.scss";
+import styles from "../pages/Main/main.module.scss";
 import axios from "axios";
-import { windDirectionImages } from "@assets/weather-images/wind-direction-images/index.jsx";
-import { pressureLevels, humidityLevels, uvLevels, visibilityLevels, cloudinessLevels, windDirections } from "./weatherParameters.jsx";
-const API_KEY = "f9db56c6edd22f0c7a44a291f2d6d8a4";
+// import { API_KEY } from "@providers/WeatherProvider";
+import { images } from "@assets/index.jsx";
+
+import { pressureLevels, humidityLevels, uvLevels, visibilityLevels, cloudinessLevels, windDirections } from "@src/constants/weatherParameters.jsx";
 export const PressureLevel = ({ pressure }) => {
 	const level = pressureLevels.find(({ min, max }) => pressure >= min && pressure < max);
 	return <p className={styles.pressure_level}>{level?.label || "Unknown pressure"}</p>;
@@ -45,14 +46,14 @@ export const GetWindDirection = ({ wind_deg }) => {
 			<span>{label}</span>
 			<img
 				className={styles.wind_direction_icon}
-				src={windDirectionImages[image]}
+				src={images.windDirection[image]}
 				alt={`Wind from the ${label}`}
 			/>
 		</div>
 	);
 };
 
-export const GetCurrentCoordinates = async () =>
+export const getCurrentCoordinates = async () =>
 	new Promise((resolve, reject) => {
 		navigator.geolocation.getCurrentPosition(
 			(position) => {
@@ -62,14 +63,17 @@ export const GetCurrentCoordinates = async () =>
 		);
 	});
 
-export const GetCurrentCity = async ({ latitude, longitude }) => {
+
+export const getCurrentCity = async ({ latitude, longitude }, API_KEY) => {
 	const response = await axios.get(`http://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=5&appid=${API_KEY}`);
 	return response.data[0].name
-}
+};
 
-export const GetCoordinates = async (value) => {
+
+export const getCoordinates = async (value, API_KEY) => {
 	const geoUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${value}&limit=5&appid=${API_KEY}`;
 	const response = await axios.get(geoUrl);
 	return response.data?.[0]
 };
+
 

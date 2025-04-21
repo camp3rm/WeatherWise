@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
-import { DataContext } from "@FetchingAPI/FetchingWeatherData";
+import { WeatherContext } from "@providers/WeatherProvider";
 import { weatherConditionImages } from "@assets/weather-images/weather-condition-images/index.jsx";
-import { CloudinessLevel } from "@utils/AdditionalData";
+import { CloudinessLevel } from "@utils/WeatherUtils";
 import styles from "../main.module.scss";
 export const CurrentWeather = ({ current, daily }) => {
-	const { weatherData } = useContext(DataContext);
+	const { weatherData } = useContext(WeatherContext);
 	const [currentTime, setCurrentTime] = useState("");
 
 	const getLocalTime = (dt, timezone_offset) => {
