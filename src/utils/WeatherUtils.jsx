@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "../pages/Main/main.module.scss";
 import axios from "axios";
-// import { API_KEY } from "@providers/WeatherProvider";
 import { images } from "@assets/index.jsx";
 
 import { pressureLevels, humidityLevels, uvLevels, visibilityLevels, cloudinessLevels, windDirections } from "@src/constants/weatherParameters.jsx";

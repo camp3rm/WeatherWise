@@ -625,7 +625,6 @@
 					font-size: 14px;
 				}
 
-				.unit_of_speed,
 				.humidity_unit,
 				.visibility_unit,
 				.pressure_unit,
@@ -931,7 +930,6 @@
 					font-size: 16px;
 				}
 
-				.unit_of_speed,
 				.humidity_unit,
 				.visibility_unit,
 				.pressure_unit,
@@ -1392,6 +1390,13 @@
 					.pressure_level {
 						font-size: 22px;
 						text-align: center;
+					}
+
+					.unit_of_speed,
+					.humidity_unit,
+					.visibility_unit {
+						font-size: 20px;
+						font-weight: 600;
 					}
 
 					.wind_direction_box {

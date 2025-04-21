@@ -14,6 +14,7 @@ export const SearchForm = ({ searchingCity, currentCity }) => {
 			console.log(error);
 		}
 	}
+	console.log("SearchForm received searchCity:", searchCity);
 	return (
 		<div className={styles.form_field}>
 			<h2>{searchCity}</h2>

@@ -54,24 +54,27 @@ export const WeatherProvider = ({ children }) => {
 			try {
 				const [weatherResponse, cityResponse] = await Promise.allSettled([
 					axios.get(weatherUrl),
-					getCurrentCity({ latitude: lat, longitude: lon }, API_KEY),]
-				);
-				if (weatherResponse?.data) {
-					setWeatherData(weatherResponse.data);
+					getCurrentCity({ latitude: lat, longitude: lon }, API_KEY),
+				]);
+
+				console.log("Weather Response:", weatherResponse);
+				console.log("City Response:", cityResponse);
+
+				if (weatherResponse.status === "fulfilled" && weatherResponse.value?.data) {
+					setWeatherData(weatherResponse.value.data);
 				} else {
-					console.log("Weather data invalid.");
+					console.warn("Weather data invalid:", weatherResponse.reason || weatherResponse);
 				}
 
-				if (cityResponse) {
-					setSearchCity(cityResponse);
+				if (cityResponse.status === "fulfilled" && cityResponse.value) {
+					setSearchCity(cityResponse.value);
 				} else {
-					console.log("City data is invalid.");
+					console.warn("City data fetch failed:", cityResponse.reason || cityResponse);
 				}
+			} catch (error) {
+				console.error("Error fetching weather or city data:", error);
 			}
-			catch (error) {
-				//
-			}
-		}
+		};
 		fetchCompleteWeatherData(latitude, longitude);
 	}
 	return (
@@ -80,7 +83,3 @@ export const WeatherProvider = ({ children }) => {
 		</WeatherContext.Provider>
 	);
 }
-
-
-
-

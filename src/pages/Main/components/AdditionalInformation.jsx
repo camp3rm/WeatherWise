@@ -25,7 +25,7 @@ export const AdditionalInformation = ({ current, daily }) => {
 			<div className={styles.wind_status}>
 				<h4 className={styles.wind_status_title}>Wind Status</h4>
 				<img className={styles.wind_icon} src={currentWeatherImages["wind"]} alt="Wind" />
-				<span className={styles.speed_of_wind}>{(current.wind_speed * 3.6).toFixed(2)}<span className={styles.unit_of_speed}>km/h</span></span>
+				<span className={styles.speed_of_wind}>{(current.wind_speed * 3.6).toFixed(1)}<span className={styles.unit_of_speed}>km/h</span></span>
 				<div className={styles.wind_direction_box}><GetWindDirection wind_deg={current.wind_deg} /></div>
 			</div>
 			<div className={styles.day_transition}>
