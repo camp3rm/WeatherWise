@@ -14,7 +14,11 @@ export const WeatherProvider = ({ children }) => {
 				const position = await getCurrentCoordinates()
 				await fetchWeather({ latitude: position.latitude, longitude: position.longitude })
 			} catch (error) {
-				await fetchWeather({ latitude: 52.232, longitude: 21.0067 })
+				try {
+					await fetchWeather({ latitude: 52.232, longitude: 21.0067 })
+				} catch (error) {
+					console.log(error);
+				}
 			} finally {
 				setIsLoading(false);
 			}
@@ -49,33 +53,29 @@ export const WeatherProvider = ({ children }) => {
 			return;
 		}
 		const weatherUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&exclude=minutely&appid=${API_KEY}&units=metric`;
+		try {
+			const [weatherResponse, cityResponse] = await Promise.allSettled([
+				axios.get(weatherUrl),
+				getCurrentCity({ latitude, longitude }, API_KEY),
+			]);
 
-		const fetchCompleteWeatherData = async (lat, lon) => {
-			try {
-				const [weatherResponse, cityResponse] = await Promise.allSettled([
-					axios.get(weatherUrl),
-					getCurrentCity({ latitude: lat, longitude: lon }, API_KEY),
-				]);
+			console.log("Weather Response:", weatherResponse);
+			console.log("City Response:", cityResponse);
 
-				console.log("Weather Response:", weatherResponse);
-				console.log("City Response:", cityResponse);
-
-				if (weatherResponse.status === "fulfilled" && weatherResponse.value?.data) {
-					setWeatherData(weatherResponse.value.data);
-				} else {
-					console.warn("Weather data invalid:", weatherResponse.reason || weatherResponse);
-				}
-
-				if (cityResponse.status === "fulfilled" && cityResponse.value) {
-					setSearchCity(cityResponse.value);
-				} else {
-					console.warn("City data fetch failed:", cityResponse.reason || cityResponse);
-				}
-			} catch (error) {
-				console.error("Error fetching weather or city data:", error);
+			if (weatherResponse.status === "fulfilled" && weatherResponse.value?.data) {
+				setWeatherData(weatherResponse.value.data);
+			} else {
+				console.warn("Weather data invalid:", weatherResponse.reason || weatherResponse);
 			}
+
+			if (cityResponse.status === "fulfilled" && cityResponse.value) {
+				setSearchCity(cityResponse.value);
+			} else {
+				console.warn("City data fetch failed:", cityResponse.reason || cityResponse);
+			}
+		} catch (error) {
+			console.error("Error fetching weather or city data:", error);
 		};
-		fetchCompleteWeatherData(latitude, longitude);
 	}
 	return (
 		<WeatherContext.Provider value={{ weatherData, isLoading, handleSubmit, searchCity }}>
