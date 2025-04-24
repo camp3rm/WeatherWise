@@ -38,5 +38,4 @@ export const getWeekday = (date) => {
 		timeZone: "UTC",
 	});
 };
-
-
+  
