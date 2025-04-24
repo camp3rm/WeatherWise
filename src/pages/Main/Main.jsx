@@ -2,48 +2,83 @@ import React, { useContext, useState } from "react";
 import { WeatherContext } from "@providers/WeatherProvider";
 import styles from "./main.module.scss";
 import Loader from "@components/Loader/Loader";
-import { CurrentWeather, AdditionalInformation, DailyWeather, HourlyWeather, SearchForm, ForecastToggleButtons } from "@pages/Main/components/index";
+import { getTime, getWeekday } from "@utils/WeatherUtils";
+import {
+	CurrentWeather,
+	AdditionalInformation,
+	DailyWeather,
+	HourlyWeather,
+	SearchForm,
+	ForecastToggleButtons,
+} from "@pages/Main/components/index";
 
 
 const Main = () => {
-	const [searchingCity, setSearchingCity] = useState("");
+	const [searchTerm, setSearchTerm] = useState("");
 	const [tabIndex, setTabIndex] = useState(1);
-	const { weatherData, isLoading } = useContext(WeatherContext);
+	const { weatherData, isLoading, handleSubmit, weatherCity } = useContext(WeatherContext);
+	const handleCityNameChange = (e) => {
+		setSearchTerm(e.target.value);
+	};
 	const handleDailyTabClick = () => {
 		setTabIndex(1);
 	}
 	const handleHourlyTabClick = () => {
 		setTabIndex(2);
 	}
-	const currentCity = (e) => {
-		const capitalizeCityName = e.target.value.replace(/\b\w/g, (char) => char.toUpperCase());
-		setSearchingCity(capitalizeCityName);
+	const onSubmit = async (e) => {
+		e.preventDefault();
+		setSearchTerm(e.target.value);
+		try {
+			await handleSubmit(searchTerm);
+		} catch (error) {
+			console.log(error);
+		}
 	}
 
-	if (isLoading) {
-		return (
-			<Loader />
-		);
-	}
+	if (isLoading) return <Loader />;
 	if (!weatherData) {
 		console.log("No data available");
 		return null;
 	};
 
 	const { current, daily, hourly } = weatherData;
+	
+	const date = new Date(
+		(weatherData.current.dt + weatherData.timezone_offset) * 1000
+	);
+	const time = getTime(date);
+	const weekday = getWeekday(date);
 
 	return (
 		<div className={styles.wrapper}>
-			<SearchForm searchingCity={searchingCity} currentCity={currentCity} />
+			<SearchForm
+				headerText={weatherCity}
+				searchTerm={searchTerm}
+				onSearch={handleCityNameChange}
+				onSubmit={onSubmit}
+			/>
 			<div className={styles.weather_forecast}>
-				<CurrentWeather current={current} daily={daily} />
+				<CurrentWeather
+					time={time}
+					daily={daily}
+					current={current}
+					weekday={weekday}
+				/>
 				<AdditionalInformation current={current} daily={daily} />
-				<ForecastToggleButtons handleDailyTabClick={handleDailyTabClick} handleHourlyTabClick={handleHourlyTabClick} />
+				<ForecastToggleButtons
+					handleDailyTabClick={handleDailyTabClick}
+					handleHourlyTabClick={handleHourlyTabClick}
+				/>
 				{tabIndex === 1 && <DailyWeather daily={daily} />}
 				{tabIndex === 2 && <HourlyWeather hourly={hourly} />}
 			</div>
 		</div>
+
+
 	);
+
+
 };
 
 

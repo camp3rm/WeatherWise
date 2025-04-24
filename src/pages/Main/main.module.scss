@@ -6,7 +6,7 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	background-image: url('../../assets/mics-images/bg-main.jpg');
+	background-image: url('../../assets/misc-images/bg-main.jpg');
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -51,6 +51,7 @@
 				border-top-left-radius: 0.625rem;
 				border-bottom-left-radius: 0.625rem;
 				padding-left: 0.625rem;
+				text-transform: capitalize;
 
 				&::placeholder {
 					color: #c0c0c0;
@@ -387,11 +388,11 @@
 			overflow-x: hidden;
 
 			& .hourly_forecast_arrow_prev {
-				background-image: url('../../assets/mics-images/arrow_left.png');
+				background-image: url('../../assets/misc-images/arrow_left.png');
 			}
 
 			& .hourly_forecast_arrow_next {
-				background-image: url('../../assets/mics-images/arrow_right.png');
+				background-image: url('../../assets/misc-images/arrow_right.png');
 			}
 
 			& .hourly_forecast_arrow_prev,

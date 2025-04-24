@@ -1,12 +1,13 @@
 import React, { createContext, useState, useEffect } from "react";
 import axios from "axios";
 import { getCurrentCoordinates, getCurrentCity, getCoordinates } from "@utils/WeatherUtils";
+import { API_KEY } from "../constants/weatherParameters";
 export const WeatherContext = createContext();
-export const API_KEY = "f9db56c6edd22f0c7a44a291f2d6d8a4";
+
 export const WeatherProvider = ({ children }) => {
 	const [weatherData, setWeatherData] = useState(null);
 	const [isLoading, setIsLoading] = useState(true);
-	const [searchCity, setSearchCity] = useState(null);
+	const [weatherCity, setWeatherCity] = useState(null);
 
 	useEffect(() => {
 		const getFetchingData = async () => {
@@ -28,7 +29,7 @@ export const WeatherProvider = ({ children }) => {
 	const handleSubmit = async (value) => {
 		try {
 			const sanitizedValue = value?.trim();
-			if (sanitizedValue === "" || !sanitizedValue) {
+			if (!sanitizedValue) {
 				//
 			}
 			setIsLoading(true);
@@ -69,7 +70,7 @@ export const WeatherProvider = ({ children }) => {
 			}
 
 			if (cityResponse.status === "fulfilled" && cityResponse.value) {
-				setSearchCity(cityResponse.value);
+				setWeatherCity(cityResponse.value);
 			} else {
 				console.warn("City data fetch failed:", cityResponse.reason || cityResponse);
 			}
@@ -78,7 +79,7 @@ export const WeatherProvider = ({ children }) => {
 		};
 	}
 	return (
-		<WeatherContext.Provider value={{ weatherData, isLoading, handleSubmit, searchCity }}>
+		<WeatherContext.Provider value={{ weatherData, isLoading, handleSubmit, weatherCity }}>
 			{children}
 		</WeatherContext.Provider>
 	);

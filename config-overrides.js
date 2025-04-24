@@ -9,6 +9,7 @@ module.exports = function override(config) {
 		'@assets': path.resolve(__dirname, 'src/assets'),
 		'@utils': path.resolve(__dirname, 'src/utils'),
 		'@providers': path.resolve(__dirname, 'src/providers'),
+		'@constants': path.resolve(__dirname, 'src/constants'),
 	};
 	return config;
 };
