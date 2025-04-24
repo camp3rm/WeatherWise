@@ -3,16 +3,19 @@ import { weatherConditionImages } from "@assets/weather-images/weather-condition
 import styles from "../main.module.scss";
 
 export const DailyWeather = ({ daily }) => {
+	const formatDate = (date) => {
+		return new Date(date.dt * 1000).toLocaleDateString("uk-UA", {
+			month: "numeric",
+			day: "numeric",
+		});
+	}
 	return (
 		<div className={styles.weather_forecast_daily}>
 			<ul className={styles.daily_forecast_list_items}>
 				{daily.map((day, daily_index) => (
 					<li className={styles.daily_forecast_item} key={daily_index}>
 						<time className={styles.daily_forecast_date}>
-							{new Date(day.dt * 1000).toLocaleDateString("uk-UA", {
-								month: "numeric",
-								day: "numeric",
-							})}
+							{formatDate(day)}
 						</time>
 						<img
 							className={styles.daily_forecast_icon}

@@ -1,4 +1,4 @@
-export { AdditionalInformation } from './AdditionalInformation';
+export { CurrentWeatherDetails } from './CurrentWeatherDetails';
 export { CurrentWeather } from './CurrentWeather';
 export { DailyWeather } from './DailyWeather';
 export { HourlyWeather } from './HourlyWeather';

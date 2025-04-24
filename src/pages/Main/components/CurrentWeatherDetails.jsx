@@ -9,7 +9,7 @@ import {
 	PressureLevel,
 } from './index'
 
-export const AdditionalInformation = ({ current, daily }) => {
+export const CurrentWeatherDetails = ({ current, daily }) => {
 	const sunriseTime = new Date(current.sunrise * 1000).toLocaleTimeString("uk-UA", {
 		hour: "2-digit",
 		minute: "2-digit",

@@ -5,7 +5,7 @@ import Loader from "@components/Loader/Loader";
 import { getTime, getWeekday } from "@utils/WeatherUtils";
 import {
 	CurrentWeather,
-	AdditionalInformation,
+	CurrentWeatherDetails,
 	DailyWeather,
 	HourlyWeather,
 	SearchForm,
@@ -65,7 +65,7 @@ const Main = () => {
 					current={current}
 					weekday={weekday}
 				/>
-				<AdditionalInformation current={current} daily={daily} />
+				<CurrentWeatherDetails current={current} daily={daily} />
 				<ForecastToggleButtons
 					handleDailyTabClick={handleDailyTabClick}
 					handleHourlyTabClick={handleHourlyTabClick}
