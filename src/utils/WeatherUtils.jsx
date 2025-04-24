@@ -75,4 +75,19 @@ export const getCoordinates = async (value, API_KEY) => {
 	return response.data?.[0]
 };
 
+export const getTime = (date) => {
+	return date.toLocaleTimeString("uk-UA", {
+	  hour: "2-digit",
+	  minute: "2-digit",
+	  timeZone: "UTC",
+	});
+  };
+  
+  export const getWeekday = (date) => {
+	return date.toLocaleDateString("uk-UA", {
+	  weekday: "long",
+	  timeZone: "UTC",
+	});
+  };
+
 
