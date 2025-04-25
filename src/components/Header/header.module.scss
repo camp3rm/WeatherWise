@@ -17,6 +17,7 @@
 		justify-content: flex-start;
 		align-items: center;
 		background: linear-gradient(to right, rgba(20, 20, 20, 0.6), rgba(40, 40, 40, 0.3));
+		-webkit-backdrop-filter: blur(4px);
 		backdrop-filter: blur(4px);
 		padding: 1rem;
 		border-bottom: 1px solid rgba(255, 255, 255, 0.1);

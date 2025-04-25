@@ -15,11 +15,11 @@
 		justify-content: space-between;
 		align-items: end;
 		background: linear-gradient(to right, rgba(20, 20, 20, 0.6), rgba(40, 40, 40, 0.3));
+		-webkit-backdrop-filter: blur(4px);
 		backdrop-filter: blur(4px);
 
 		& .copyright {
 			font-size: 16px;
-			color: black;
 			margin: 0 0 0.3125rem 0.9375rem;
 		}
 
