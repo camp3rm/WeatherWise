@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import { getCurrentCoordinates, getCurrentCity, getCoordinates } from '@utils/WeatherUtils';
-import { API_KEY } from '../constants/weatherParameters';
+import { API_KEY } from '@constants/weatherParameters';
 export const WeatherContext = createContext();
 
 export const WeatherProvider = ({ children }) => {

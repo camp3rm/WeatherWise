@@ -3,8 +3,6 @@ import { weatherConditionImages } from '@assets/weather-images/weather-condition
 import styles from '../main.module.scss';
 
 export const DailyWeather = ({ daily }) => {
-  console.log(daily);
-
   return (
     <div className={styles.weather_forecast_daily}>
       <ul className={styles.daily_forecast_list_items}>

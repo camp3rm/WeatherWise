@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { API_KEY } from '../constants/weatherParameters';
-
+import { API_KEY } from '@constants/weatherParameters';
+console.log('API_KEY:', API_KEY);
 export const getCurrentCoordinates = async () =>
   new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(

@@ -52,4 +52,4 @@ export const windDirections = [
   { min: 338, max: 361, label: 'N', image: 'north.png' },
 ];
 
-export const API_KEY = 'f9db56c6edd22f0c7a44a291f2d6d8a4';
+export const API_KEY = process.env.REACT_APP_API_KEY;
