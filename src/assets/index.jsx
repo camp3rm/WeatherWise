@@ -3,7 +3,7 @@ import { weatherConditionImages } from './weather-images/weather-condition-image
 import { windDirectionImages } from './weather-images/wind-direction-images';
 
 export const images = {
-	currentWeather: currentWeatherImages,
-	weatherCondition: weatherConditionImages,
-	windDirection: windDirectionImages,
+  currentWeather: currentWeatherImages,
+  weatherCondition: weatherConditionImages,
+  windDirection: windDirectionImages,
 };
