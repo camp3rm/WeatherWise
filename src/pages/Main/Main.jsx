@@ -16,7 +16,7 @@ const Main = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [tabIndex, setTabIndex] = useState(1);
   const { weatherData, isLoading, handleSubmit, weatherCity } = useContext(WeatherContext);
-  const handleCityNameChange = (e) => {
+  const onSearch = (e) => {
     setSearchTerm(e.target.value);
   };
   const handleDailyTabClick = () => {
@@ -30,11 +30,12 @@ const Main = () => {
     try {
       await handleSubmit(searchTerm);
     } catch (error) {
-      console.log(error);
+      alert(error.message);
     }
   };
 
   if (isLoading) return <Loader />;
+
   if (!weatherData) {
     console.log('No data available');
     return null;
@@ -48,12 +49,7 @@ const Main = () => {
 
   return (
     <div className={styles.wrapper}>
-      <SearchForm
-        headerText={weatherCity}
-        searchTerm={searchTerm}
-        onSearch={handleCityNameChange}
-        onSubmit={onSubmit}
-      />
+      <SearchForm headerText={weatherCity} searchTerm={searchTerm} onSearch={onSearch} onSubmit={onSubmit} />
       <div className={styles.weather_forecast}>
         <CurrentWeather time={time} daily={daily} current={current} weekday={weekday} />
         <CurrentWeatherDetails current={current} daily={daily} />

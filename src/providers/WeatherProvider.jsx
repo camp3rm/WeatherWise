@@ -33,50 +33,43 @@ export const WeatherProvider = ({ children }) => {
     try {
       const sanitizedValue = value?.trim();
       if (!sanitizedValue) {
-        //
+        throw new Error('Please enter a valid city name');
       }
       setIsLoading(true);
       const coordinates = await getCoordinates(sanitizedValue);
       if (!coordinates) {
-        //
+        throw new Error('No coordinates');
       }
       await fetchWeather({
         latitude: coordinates.lat,
         longitude: coordinates.lon,
       });
     } catch (error) {
-      //
+      throw error;
     } finally {
       setIsLoading(false);
     }
   };
   const fetchWeather = async ({ latitude, longitude }) => {
     if (!latitude || !longitude) {
-      //
-      return;
+      throw new Error('Invalid coordinates');
+    
     }
     const weatherUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&exclude=minutely&appid=${API_KEY}&units=metric`;
-    try {
+    
       const [weatherResponse, cityResponse] = await Promise.allSettled([
         axios.get(weatherUrl),
         getCurrentCity({ latitude, longitude }),
       ]);
 
-      if (weatherResponse.status === 'fulfilled' && weatherResponse.value?.data) {
+      if (weatherResponse.status === 'fulfilled' ) {
+        if (cityResponse.status === 'fulfilled') {
+          setWeatherCity(cityResponse.value);
+        }
         setWeatherData(weatherResponse.value.data);
       } else {
-        console.warn('Weather data invalid:', weatherResponse.reason || weatherResponse);
+        throw new Error('Data fetch is failed');
       }
-
-      if (cityResponse.status === 'fulfilled' && cityResponse.value) {
-        setWeatherCity(cityResponse.value);
-      } else {
-        console.warn('City data fetch failed:', cityResponse.reason || cityResponse);
-      }
-    } catch (error) {
-      console.error('Error fetching weather or city data:', error);
-    }
-  };
   return (
     <WeatherContext.Provider value={{ weatherData, isLoading, handleSubmit, weatherCity }}>
       {children}
