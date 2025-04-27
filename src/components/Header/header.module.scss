@@ -1,55 +1,53 @@
 @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Montserrat:ital,&display=swap');
 
 .wrapper {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	width: 100%;
-	height: auto;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
 
-	.header {
-		width: 100%;
-		margin: 0 auto;
-		height: 6.25rem;
-		display: grid;
-		display: flex;
-		flex-direction: row;
-		justify-content: flex-start;
-		align-items: center;
-		background: linear-gradient(to right, rgba(20, 20, 20, 0.6), rgba(40, 40, 40, 0.3));
-		-webkit-backdrop-filter: blur(4px);
-		backdrop-filter: blur(4px);
-		padding: 1rem;
-		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  .header {
+    width: 100%;
+    margin: 0 auto;
+    height: 6.25rem;
+    display: grid;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    background: linear-gradient(to right, rgba(20, 20, 20, 0.6), rgba(40, 40, 40, 0.3));
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
-		& .app_name {
-			font-family: 'Bree Serif', serif;
-			font-size: clamp(1.5625rem, 3.5vw, 2.5rem);
-			text-align: center;
-			color: #dfe6e9;
-			margin-left: 0.3125rem;
-			display: flex;
-			flex-direction: row;
-			align-items: center;
+    & .app_name {
+      font-family: 'Bree Serif', serif;
+      font-size: clamp(1.5625rem, 3.5vw, 2.5rem);
+      text-align: center;
+      color: #dfe6e9;
+      margin-left: 0.3125rem;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
 
-			& h3 {
-				margin: 0 auto;
-				padding: 0;
-				text-align: center;
-			}
+      & h3 {
+        margin: 0 auto;
+        padding: 0;
+        text-align: center;
+      }
 
-			.logo {
-				padding: 0;
-				display: flex;
-				justify-content: center;
-				align-items: center;
+      .logo {
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-
-				& img {
-					margin-left: 0.9375rem;
-
-				}
-			}
-		}
-	}
+        & img {
+          margin-left: 0.9375rem;
+        }
+      }
+    }
+  }
 }

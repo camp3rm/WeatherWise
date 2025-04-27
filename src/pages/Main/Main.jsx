@@ -27,7 +27,6 @@ const Main = () => {
   };
   const onSubmit = async (e) => {
     e.preventDefault();
-    setSearchTerm(e.target.value);
     try {
       await handleSubmit(searchTerm);
     } catch (error) {

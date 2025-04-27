@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { API_KEY } from '@constants/weatherParameters';
-console.log('API_KEY:', API_KEY);
+
 export const getCurrentCoordinates = async () =>
   new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(
@@ -15,6 +15,7 @@ export const getCurrentCity = async ({ latitude, longitude }) => {
   const response = await axios.get(
     `http://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=5&appid=${API_KEY}`
   );
+
   return response.data[0].name;
 };
 

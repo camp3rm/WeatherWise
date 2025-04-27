@@ -36,7 +36,7 @@ export const WeatherProvider = ({ children }) => {
         //
       }
       setIsLoading(true);
-      const coordinates = await getCoordinates(sanitizedValue, API_KEY);
+      const coordinates = await getCoordinates(sanitizedValue);
       if (!coordinates) {
         //
       }
@@ -59,11 +59,8 @@ export const WeatherProvider = ({ children }) => {
     try {
       const [weatherResponse, cityResponse] = await Promise.allSettled([
         axios.get(weatherUrl),
-        getCurrentCity({ latitude, longitude }, API_KEY),
+        getCurrentCity({ latitude, longitude }),
       ]);
-
-      console.log('Weather Response:', weatherResponse);
-      console.log('City Response:', cityResponse);
 
       if (weatherResponse.status === 'fulfilled' && weatherResponse.value?.data) {
         setWeatherData(weatherResponse.value.data);

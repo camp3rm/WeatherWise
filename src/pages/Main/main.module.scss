@@ -4,1657 +4,1630 @@ $background-color: rgba(0, 51, 102, 0.6);
 $background-blur: rgba(255, 255, 255, 0.1);
 $font-primary: 'Raleway', sans-serif;
 $font-secondary: 'Lato', sans-serif;
-$font-size-large: 25px; 
-$font-size-medium: 20px; 
+$font-size-large: 25px;
+$font-size-medium: 20px;
 $font-size-small: 16px;
-$icon-size-large: 5.3125rem; 
-$icon-size-medium: 4.0625rem; 
-$icon-size-small: 1.875rem; 
-
+$icon-size-large: 5.3125rem;
+$icon-size-medium: 4.0625rem;
+$icon-size-small: 1.875rem;
 
 .wrapper {
-	min-height: 100dvh;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	background-image: url('../../assets/misc-images/bg-main.jpg');
-	background-position: center center;
-	background-repeat: no-repeat;
-	background-size: cover;
-
-
-	& .form_field {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		margin: 0 auto;
-		width: 80%;
-		background: $background-blur;
-		border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-		-webkit-backdrop-filter: blur(10px);
-		backdrop-filter: blur(10px);
-
-		& h2 {
-			font-family: $font-primary;
-			margin-left: 0.9375rem;
-			font-weight: 600;
-			font-size: clamp(1rem, 4vw, 2.8125rem);
-			line-height: 2.625rem;
-			color: $primary-color;
-		}
-
-		& .form {
-			display: flex;
-			justify-content: end;
-			align-items: center;
-			width: auto;
-			height: 5rem;
-			margin-right: 0.9375rem;
-
-			& .city_name {
-				display: block;
-				height: 2.625rem;
-				width: 100%;
-				background: rgba(0, 51, 102, 0.7);
-				color: $secondary-color;
-				outline: none;
-				border: none;
-				border-top-left-radius: 0.625rem;
-				border-bottom-left-radius: 0.625rem;
-				padding-left: 0.625rem;
-				text-transform: capitalize;
-
-				&::placeholder {
-					color: $secondary-color;
-				}
-			}
-
-			& .search_button {
-				width: 2.625rem;
-				height: 2.625rem;
-				border: none;
-				outline: none;
-				background: rgba(0, 51, 102, 1);
-				border-top-right-radius: 0.625rem;
-				border-bottom-right-radius: 0.625rem;
-			}
-		}
-	}
-
-	.weather_forecast {
-		padding: 0;
-		box-sizing: border-box;
-		margin: 0 auto;
-		width: 80%;
-		height: 100%;
-		display: grid;
-		background: $background-blur;
-		-webkit-backdrop-filter: blur(10px);
-		backdrop-filter: blur(10px);
-		color: $primary-color;
-
-		& .current_container {
-			margin: 0;
-			padding: 0;
-			display: grid;
-			align-content: start;
-			align-items: start;
-
-			& .current_container_icon {
-				display: block;
-				margin: 0.9375rem 0 0 1.5625rem;
-				width: 9.375rem;
-				height: 9.375rem;
-				border-radius: 1.5625rem;
-				background: rgba(255, 255, 255, 0.4);
-			}
-
-			& .current_temp {
-				margin: 3.125rem 0 0.9375rem 1.875rem;
-				font-size: 56px;
-				font-weight: normal;
-			}
-
-			& .current_date {
-				width: 80%;
-				margin: 0 1.875rem;
-				display: block;
-
-				& .current_day {
-					color: $primary-color;
-					font-family: $font-secondary;
-					margin-right: 0.625rem;
-				}
-
-				& .current_time {
-					color: #aaaab1;
-					font-family: $font-secondary;
-				}
-			}
-
-			& .clouds_precipitation_info {
-				display: flex;
-				flex-direction: column;
-				align-items: flex-start;
-				justify-content: center;
-				margin: 2.1875rem 0 3.125rem 1.875rem;
-
-				& .clouds,
-				& .precipitation,
-				& .feels_like {
-					line-height: 1.2;
-					font-family: $font-secondary;
-					padding-bottom: 0.3125rem;
-				}
-
-				& .clouds,
-				& .feels_like,
-				& .precipitation,
-				& .daily_rain {
-					margin-bottom: 0.9375rem;
-				}
-
-				& .daily_rain,
-				& .daily_snow {
-					line-height: 1.2;
-					font-family: $font-secondary;
-					padding-bottom: 0.3125rem;
-				}
-			}
-		}
-
-		& .additional_information_container {
-			display: grid;
-			grid-template-columns: repeat(3, 1fr);
-			grid-template-rows: repeat(2, 1fr);
-
-			& .clouds {
-				display: none;
-			}
-
-			& .risk_of_harm {
-				font-size: $font-size-medium;
-			}
-
-			& .humidity,
-			& .pressure,
-			& .visibility {
-				display: grid;
-				grid-template-rows: repeat(4, 1fr);
-				grid-template-columns: 1fr;
-			}
-
-			& .uv_index_title,
-			& .wind_status_title,
-			& .day_transition_title,
-			& .humidity_title,
-			& .visibility_title,
-			& .pressure_title {
-				align-self: flex-start;
-				padding-top: 0.9375rem;
-				padding-left: 0.9375rem;
-				font-size: $font-size-small;
-			}
-
-			& .daily_value,
-			& .speed_of_wind,
-			& .humidity_value,
-			& .pressure_value,
-			& .visibility_value,
-			& .humidity_value {
-				font-size: 35px;
-				margin-top: 0.625rem;
-			}
-
-			& .pressure_level,
-			& .visibility_level,
-			& .humidity_level {
-				margin-bottom: 1.25rem;
-				font-size: $font-size-medium;
-				text-align: center;
-			}
-
-			& .humidity_unit,
-			& .pressure_unit,
-			& .visibility_unit {
-				font-size: $font-size-medium;
-			}
-
-			& .uv_index,
-			& .wind_status,
-			& .visibility,
-			&.day_transition,
-			& .humidity,
-			& .pressure {
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				justify-content: space-between;
-				margin: 0.625rem;
-				border-radius: 1.5625rem;
-				background: rgba(0, 51, 102, 0.4);
-				color: $primary-color;
-
-				& .risk_of_harm {
-					font-size: $font-size-medium;
-					font-weight: 500;
-					margin-bottom: 1.25rem;
-				}
-
-				& .wind_direction_box {
-					padding-bottom: 0.625rem;
-					font-weight: 500;
-					color: #fff;
-
-					.wind_direction_description {
-						display: flex;
-						flex-direction: row;
-						justify-content: center;
-						align-items: center;
-
-						& .wind_direction_icon {
-							border-radius: 50%;
-							margin-left: 1.25rem;
-							padding: 0.3125rem;
-							line-height: 1;
-							background-color: rgb(255, 255, 255);
-						}
-					}
-				}
-			}
-
-			.day_transition {
-				display: flex;
-				flex-direction: column;
-				margin: 0.625rem;
-				border-radius: 1.5625rem;
-				background: rgba(0, 51, 102, 0.4);
-				color: $primary-color;
-				justify-content: space-between;
-
-				& .day_transition_box {
-					display: flex;
-					flex-direction: column;
-					align-items: center;
-
-					& .sunrise,
-					& .sunset {
-						font-size: 18px;
-						font-weight: 500;
-						display: flex;
-						flex-direction: row;
-						align-items: center;
-						margin: 2.1875rem auto;
-
-						& .sunrise_icon,
-						& .sunset_icon {
-							margin-right: 0.625rem;
-						}
-					}
-
-					& .sunrise_small,
-					& .sunset_small {
-						display: none;
-					}
-				}
-			}
-		}
-
-		& .daily_hourly_forecast_button {
-			grid-row: 2/3;
-			grid-column: 1/3;
-			margin: 0.9375rem 0 0.9375rem 0;
-			display: flex;
-			flex-direction: row;
-			justify-content: space-around;
-			align-items: center;
-
-			& .daily_forecast_button,
-			& .hourly_forecast_button {
-				cursor: pointer;
-				font-size: $font-size-medium;
-				height: 3.125rem;
-				width: 100%;
-				background: $background-color;
-				box-shadow: 2px 2px 2px 2px rgb(0, 51, 102);
-				color: $primary-color;
-				border-radius: 0.9375rem;
-				margin: 0 0.625rem;
-				padding: 0;
-
-				&:hover {
-					background-color: rgba(2, 88, 173, 0.6);
-					-webkit-backdrop-filter: blur(10px);
-					backdrop-filter: blur(10px);
-					cursor: pointer;
-				}
-			}
-		}
-
-		& .weather_forecast_daily {
-			font-size: $font-size-medium;
-			grid-column: 1/3;
-			grid-row: 3/4;
-			display: flex;
-			flex-direction: row;
-			margin-bottom: 1.25rem;
-
-
-			& .daily_forecast_list_items {
-				width: 100%;
-				margin: 0.3125rem 0.3125rem 0.9375rem 0.3125rem;
-				display: flex;
-				flex-direction: row;
-				justify-content: space-around;
-				align-items: center;
-
-				& .daily_forecast_item {
-					background: rgba(0, 51, 102, 0.3);
-					flex: 1 0 auto;
-					list-style: none;
-					display: flex;
-					flex-direction: column;
-					align-items: center;
-					border-radius: 0.3125rem;
-					padding: 0.625rem 0;
-					margin: 0 0.1875rem;
-
-					& .daily_forecast_date,
-					& .daily_forecast_temp,
-					& .daily_forecast_icon {
-						margin-top: 0.9375rem;
-						color: $primary-color;
-					}
-
-					& .daily_forecast_temp {
-						margin-bottom: 0.9375rem;
-					}
-
-					& .daily_forecast_icon {
-						background-color: rgb(225, 225, 245);
-						border-radius: 0.625rem;
-						max-width: $icon-size-medium;
-						max-height: $icon-size-medium;
-					}
-
-					&:hover {
-						background: rgba(2, 88, 173, 0.6);
-						-webkit-backdrop-filter: blur(10px);
-						backdrop-filter: blur(10px);
-						cursor: pointer;
-					}
-				}
-			}
-		}
-
-		& .weather_forecast_hourly {
-			grid-column: 1/3;
-			grid-row: 3/4;
-			font-size: 1.25rem;
-			width: 100%;
-			display: flex;
-			flex-direction: row;
-			gap: 0.3125rem;
-			overflow-x: hidden;
-
-			& .hourly_forecast_arrow_prev {
-				background-image: url('../../assets/misc-images/arrow_left.png');
-			}
-
-			& .hourly_forecast_arrow_next {
-				background-image: url('../../assets/misc-images/arrow_right.png');
-			}
-
-			& .hourly_forecast_arrow_prev,
-			& .hourly_forecast_arrow_next {
-				align-self: self-start;
-				flex: 0 0 2.5rem;
-				height: 2.5rem;
-				background-color: $background-color;
-				margin: 0 0.3125rem;
-				border-radius: 0.3125rem;
-				background-position: center;
-				background-repeat: no-repeat;
-			}
-
-			& .hourly_forecast_list_items {
-				border-top: 2.5rem solid $background-color;
-				list-style: none;
-				display: flex;
-				flex-direction: row;
-				overflow-x: scroll;
-				overflow-y: hidden;
-
-				& .hourly_forecast_item {
-					flex: 0 0 auto;
-					list-style: none;
-					display: flex;
-					flex-direction: column;
-					align-items: center;
-					margin: 0.3125rem;
-					border-radius: 0.3125rem;
-					background: rgba(0, 51, 102, 0.3);
-
-					& .hourly_forecast_date,
-					& .hourly_forecast_temp,
-					& .hourly_forecast_icon {
-						margin-top: 1.25rem;
-						color: $primary-color;
-					}
-
-					& .hourly_forecast_icon {
-						background-color: rgb(225, 225, 245);
-						border-radius: 0.3125rem;
-					}
-
-					&:hover {
-						background: rgba(2, 88, 173, 0.6);
-						-webkit-backdrop-filter: blur(10px);
-						backdrop-filter: blur(10px);
-						cursor: pointer;
-					}
-				}
-			}
-		}
-	}
-
-	@media (max-width:36rem) {
-		.form_field {
-			display: grid;
-			grid-template-columns: 1fr;
-			grid-template-rows: repeat(2, 3.125rem);
-			width: 100%;
-			height: auto;
-
-			h2 {
-				grid-row: 2/3;
-			}
-
-			.form {
-				grid-row: 1/2;
-				margin-left: 0.9375rem;
-				justify-content: start;
-
-				.city_name {
-					height: 2.1875rem;
-					width: 100%;
-				}
-
-				.search_button {
-					width: 2.1875rem;
-					height: 2.1875rem;
-
-					img {
-						width: 1.5625rem;
-						height: 1.5625rem;
-					}
-				}
-			}
-		}
-
-		.weather_forecast {
-			width: 100%;
-			grid-template-columns: 1fr;
-			grid-template-rows: repeat(4);
-
-			.current_container {
-				grid-column: 1/3;
-				grid-row: 1/2;
-
-				.clouds_precipitation_info {
-					margin: 1.5625rem 0 0.9375rem 1.875rem;
-				}
-
-				.current_container_icon {
-					width: 6.25rem;
-					height: 6.25rem;
-				}
-
-				.current_temp {
-					font-size: 30px;
-					margin-top: 1.25rem;
-				}
-
-				.current_day,
-				.current_time {
-					font-size: $font-size-small;
-					font-weight: 600;
-				}
-
-				.feels_like,
-				.clouds,
-				.precipitation,
-				.daily_rain,
-				.daily_snow {
-					font-size: $font-size-small;
-					font-weight: 600;
-				}
-			}
-
-			.additional_information_container {
-				grid-template-columns: 1fr;
-				grid-template-rows: repeat(6, 4.6875rem);
-				grid-column: 1/3;
-				grid-row: 2/3;
-
-
-				.uv_index,
-				.wind_status,
-				.day_transition,
-				.humidity,
-				.visibility,
-				.pressure {
-					height: 3.4375rem;
-				}
-
-				.wind_status {
-					background-image: url('../../assets/weather-images/background-images/wind-status.jpg');
-					background-repeat: no-repeat;
-					background-position: center;
-					background-size: cover;
-				}
-
-				.day_transition {
-					background-image: url('../../assets/weather-images/background-images/dat-transition.jpg');
-					background-repeat: no-repeat;
-					background-position: center center;
-					background-size: cover;
-				}
-
-				.humidity {
-					background-image: url('../../assets/weather-images/background-images/humidity.jpg');
-					background-repeat: no-repeat;
-					background-position: center bottom;
-					background-size: cover;
-				}
-
-
-				.visibility {
-					background-image: url('../../assets/weather-images/background-images/visibility.jpg');
-					background-repeat: no-repeat;
-					background-position: center;
-					background-size: cover;
-				}
-
-				.pressure {
-					background-image: url('../../assets/weather-images/background-images/pressure.jpg');
-					background-repeat: no-repeat;
-					background-position: center;
-					background-size: cover;
-				}
-
-				.uv_index,
-				.wind_status,
-				.humidity,
-				.visibility,
-				.pressure {
-					display: grid;
-					grid-template-columns: repeat(3, 1fr);
-					grid-template-rows: 1fr;
-				}
-
-				.uv_index_title,
-				.wind_status_title,
-				.humidity_title,
-				.visibility_title,
-				.pressure_title,
-				.day_transition_title {
-					align-self: center;
-					padding-top: 0;
-					font-size: 15px;
-				}
-
-				.uv_index_icon,
-				.wind_icon,
-				.humidity_icon,
-				.visibility_icon,
-				.pressure_icon {
-					display: none;
-				}
-
-				.daily_value,
-				.speed_of_wind,
-				.humidity_value,
-				.visibility_value,
-				.pressure_value {
-					text-align: center;
-					margin-top: 0;
-					font-size: 14px;
-					font-weight: 500;
-				}
-
-				.risk_of_harm,
-				.wind_direction_box,
-				.humidity_level,
-				.visibility_level,
-				.pressure_level {
-					text-align: center;
-					font-weight: 600;
-					line-height: 1.2;
-					margin-bottom: 0;
-					margin-right: 0.3125rem;
-					font-size: 14px;
-				}
-
-				.humidity_unit,
-				.visibility_unit,
-				.pressure_unit,
-				.unit_of_speed {
-					font-size: 14px;
-					font-weight: 600;
-				}
-
-				.day_transition {
-					display: grid;
-					grid-template-columns: 1fr 2fr;
-					grid-template-rows: 1fr;
-
-					.day_transition_title {
-						align-self: center;
-						padding-top: 0;
-						width: auto;
-						font-size: 14px;
-					}
-
-					.day_transition_box {
-						display: grid;
-						grid-template-columns: repeat(2, 1fr);
-						grid-template-rows: 1fr;
-						justify-items: center;
-
-						.sunrise,
-						.sunset {
-							margin: 0;
-							padding: 0;
-
-							.sunrise_icon,
-							.sunset_icon {
-								width: 2.8125rem;
-								height: 2.8125rem;
-							}
-						}
-
-						time {
-							font-weight: 600;
-							font-size: 14px;
-						}
-					}
-				}
-
-				.wind_direction_icon {
-					display: none;
-				}
-
-				.uv_index {
-					.risk_of_harm_box {
-						display: flex;
-						justify-content: center;
-						align-items: center;
-
-						.risk_of_harm {
-							margin-bottom: 0;
-							font-weight: 600;
-							width: min-content;
-							line-height: 1.2;
-							font-size: 14px;
-						}
-					}
-				}
-
-				.wind_status {
-					.wind_direction_box {
-						padding-bottom: 0;
-						font-weight: 600;
-					}
-				}
-			}
-
-			.daily_hourly_forecast_button {
-				grid-column: 1/3;
-				grid-row: 3/4;
-
-				 .daily_forecast_button,
-			 .hourly_forecast_button {
-					height: 2.1875rem;
-					font-size: 18px;
-					border-radius: 0.625rem;
-				}
-			}
-
-			.weather_forecast_hourly {
-				grid-column: 1/3;
-				grid-row: 4/5;
-				margin-top: 0.9375rem;
-				height: 11.25rem;
-
-				.hourly_forecast_list_items {
-					height: 100%;
-
-					.hourly_forecast_item {
-						margin-top: 0.9375rem;
-
-
-						.hourly_forecast_date,
-						.hourly_forecast_temp {
-							margin-bottom: 0;
-							margin-top: 0;
-							font-size: 13px;
-							margin: 0.3125rem 0.3125rem;
-						}
-
-						.hourly_forecast_icon {
-							width: $icon-size-small;
-							height: $icon-size-small;
-							margin: 1.25rem 0;
-						}
-					}
-				}
-			}
-
-			.weather_forecast_daily {
-				margin-top: 0.9375rem;
-				grid-column: 1/3;
-				grid-row: 4/5;
-
-				.daily_forecast_list_items {
-					.daily_forecast_item {
-						margin-top: 0.3125rem;
-
-						.daily_forecast_date,
-						.daily_forecast_temp {
-							margin-bottom: 0;
-							margin-top: 0;
-							font-size: 13px;
-						}
-
-						.daily_forecast_icon {
-							width: $icon-size-small;
-							height: $icon-size-small;
-							margin: 1.25rem 0;
-						}
-					}
-				}
-			}
-		}
-	}
-
-	@media (min-width:36rem) and (max-width:48rem) {
-		.form_field {
-			width: 100%;
-			height: auto;
-			display: grid;
-			grid-template-rows: repeat(2, 3.125rem);
-			grid-template-columns: 1fr;
-			align-content: center;
-
-			h2 {
-				grid-row: 2/3;
-			}
-
-			.form {
-				margin: 0 0.9375rem;
-				grid-row: 1/2;
-				grid-column: 1/2;
-
-				.city_name {
-					height: 2.1875rem;
-					min-width: 15.625rem;
-					font-size: 17px;
-				}
-
-				.city_name::placeholder {
-					font-size: 17px;
-				}
-
-				.search_button {
-					width: 2.1875rem;
-					height: 2.1875rem;
-
-					img {
-						width: $icon-size-small;
-						height: $icon-size-small;
-					}
-				}
-			}
-		}
-
-		.weather_forecast {
-			width: 100%;
-			grid-template-columns: 1fr 2fr;
-
-			.current_container {
-
-				.current_container_icon {
-					width: 8.125rem;
-					height: 8.125rem;
-				}
-
-				.current_temp {
-					font-size: 45px;
-				}
-
-				.current_day,
-				.current_time {
-					font-size: 18px;
-				}
-
-				.feels_like,
-				.clouds,
-				.precipitation,
-				.daily_rain,
-				.daily_snow {
-					font-size: 18px;
-				}
-			}
-
-			.additional_information_container {
-				grid-template-columns: 1fr;
-				grid-template-rows: repeat(6, 6.25rem);
-
-				.wind_status {
-					background-image: url('../../assets/weather-images/background-images/wind-status.jpg');
-					background-repeat: no-repeat;
-					background-position: center;
-					background-size: cover;
-				}
-
-				.day_transition {
-					background-image: url('../../assets/weather-images/background-images/dat-transition.jpg');
-					background-repeat: no-repeat;
-					background-position: center center;
-					background-size: cover;
-				}
-
-				.humidity {
-					background-image: url('../../assets/weather-images/background-images/humidity.jpg');
-					background-repeat: no-repeat;
-					background-position: center bottom;
-					background-size: cover;
-				}
-
-
-				.visibility {
-					background-image: url('../../assets/weather-images/background-images/visibility.jpg');
-					background-repeat: no-repeat;
-					background-position: center;
-					background-size: cover;
-				}
-
-				.pressure {
-					background-image: url('../../assets/weather-images/background-images/pressure.jpg');
-					background-repeat: no-repeat;
-					background-position: center;
-					background-size: cover;
-				}
-
-				.uv_index,
-				.wind_status,
-				.humidity,
-				.visibility,
-				.pressure {
-					display: grid;
-					grid-template-columns: repeat(3, 1fr);
-					grid-template-rows: 1fr;
-				}
-
-
-				.uv_index_title,
-				.wind_status_title,
-				.humidity_title,
-				.visibility_title,
-				.pressure_title,
-				.day_transition_title {
-					align-self: center;
-					padding-top: 0;
-					font-size: $font-size-small;
-				}
-
-				.uv_index_icon,
-				.wind_icon,
-				.humidity_icon,
-				.visibility_icon,
-				.pressure_icon {
-					display: none;
-				}
-
-				.daily_value,
-				.speed_of_wind,
-				.humidity_value,
-				.visibility_value,
-				.pressure_value {
-					text-align: center;
-					margin-top: 0;
-					font-size: 18px;
-					font-weight: 500;
-				}
-
-				.risk_of_harm,
-				.wind_direction_box,
-				.humidity_level,
-				.visibility_level,
-				.pressure_level {
-					text-align: center;
-					font-weight: 600;
-					line-height: 1.2;
-					margin-bottom: 0;
-					margin-right: 0.3125rem;
-					font-size: $font-size-small;
-				}
-
-				.humidity_unit,
-				.visibility_unit,
-				.pressure_unit,
-				.unit_of_speed {
-					font-size: $font-size-small;
-					font-weight: 600;
-				}
-
-				.day_transition {
-					display: grid;
-					grid-template-columns: 1fr 2fr;
-					grid-template-rows: 1fr;
-
-					.day_transition_title {
-						align-self: center;
-						padding-top: 0;
-						width: auto;
-						font-size: $font-size-small;
-					}
-
-					.day_transition_box {
-						display: grid;
-						grid-template-columns: repeat(2, 1fr);
-						grid-template-rows: 1fr;
-						justify-items: center;
-
-						.sunrise,
-						.sunset {
-							margin: 0;
-							padding: 0;
-
-							.sunrise_icon,
-							.sunset_icon {
-								width: 2.8125rem;
-								height: 2.8125rem;
-							}
-						}
-
-						time {
-							font-weight: 600;
-							font-size: $font-size-small;
-						}
-					}
-				}
-
-				.wind_direction_icon {
-					display: none;
-				}
-
-				.uv_index {
-					.risk_of_harm_box {
-						display: flex;
-						justify-content: center;
-						align-items: center;
-
-						.risk_of_harm {
-							margin-bottom: 0;
-							font-weight: 600;
-							width: min-content;
-							line-height: 1.2;
-							font-size: $font-size-small;
-						}
-					}
-				}
-
-				.wind_status {
-					.wind_direction_box {
-						padding-bottom: 0;
-						font-weight: 600;
-					}
-				}
-			}
-
-			.weather_forecast_hourly {
-				margin-top: 0.9375rem;
-				height: 14.6875rem;
-
-				.hourly_forecast_list_items {
-					height: 100%;
-
-					.hourly_forecast_item {
-						margin-top: 0.9375rem;
-
-
-						.hourly_forecast_date,
-						.hourly_forecast_temp {
-							margin-bottom: 0;
-							margin-top: 0;
-							font-size: 22px;
-							margin: 0.3125rem 0.3125rem;
-						}
-
-						.hourly_forecast_icon {
-							width: 4.375rem;
-							height: 4.375rem;
-							margin: 1.25rem 0;
-						}
-					}
-				}
-			}
-
-			.weather_forecast_daily {
-				margin-top: 0.9375rem;
-
-				.daily_forecast_list_items {
-					.daily_forecast_item {
-						margin-top: 0.3125rem;
-
-
-						.daily_forecast_date,
-						.daily_forecast_temp {
-							margin-bottom: 0;
-							margin-top: 0;
-							font-size: $font-size-medium;
-						}
-
-						.daily_forecast_icon {
-							width: $icon-size-large;
-							height: $icon-size-large;
-							margin: 1.25rem 0;
-						}
-					}
-				}
-			}
-		}
-	}
-
-	@media (min-width:48rem) and (max-width:62rem) {
-		.form_field {
-			width: 100%;
-
-			.city_name {
-				min-width: 18.75rem;
-				font-size: $font-size-medium;
-			}
-
-			.city_name::placeholder {
-				font-size: $font-size-medium;
-			}
-		}
-
-		.weather_forecast {
-			width: 100%;
-
-			.current_container {
-
-				.current_container_icon {
-					width: 12.5rem;
-					height: 12.5rem;
-				}
-
-				.current_temp {
-					font-size: 50px;
-				}
-
-				.current_day,
-				.current_time {
-					font-size: $font-size-medium;
-				}
-
-				.feels_like,
-				.clouds,
-				.precipitation,
-				.daily_rain,
-				.daily_snow {
-					font-size: $font-size-medium;
-				}
-			}
-
-			.additional_information_container {
-				grid-template-columns: 1fr;
-				grid-template-rows: repeat(6, 6.25rem);
-
-				.wind_status {
-					background-image: url('../../assets/weather-images/background-images/wind-status.jpg');
-					background-repeat: no-repeat;
-					background-position: center;
-					background-size: cover;
-				}
-
-				.day_transition {
-					background-image: url('../../assets/weather-images/background-images/dat-transition.jpg');
-					background-repeat: no-repeat;
-					background-position: center center;
-					background-size: cover;
-				}
-
-				.humidity {
-					background-image: url('../../assets/weather-images/background-images/humidity.jpg');
-					background-repeat: no-repeat;
-					background-position: center bottom;
-					background-size: cover;
-				}
-
-
-				.visibility {
-					background-image: url('../../assets/weather-images/background-images/visibility.jpg');
-					background-repeat: no-repeat;
-					background-position: center;
-					background-size: cover;
-				}
-
-				.pressure {
-					background-image: url('../../assets/weather-images/background-images/pressure.jpg');
-					background-repeat: no-repeat;
-					background-position: center;
-					background-size: cover;
-				}
-
-				.uv_index,
-				.wind_status,
-				.humidity,
-				.visibility,
-				.pressure {
-					display: grid;
-					grid-template-columns: repeat(3, 1fr);
-					grid-template-rows: 1fr;
-				}
-
-
-				.uv_index_title,
-				.wind_status_title,
-				.humidity_title,
-				.visibility_title,
-				.pressure_title,
-				.day_transition_title {
-					align-self: center;
-					padding-top: 0;
-					font-size: 18px;
-				}
-
-				.uv_index_icon,
-				.wind_icon,
-				.humidity_icon,
-				.visibility_icon,
-				.pressure_icon {
-					display: none;
-				}
-
-				.daily_value,
-				.speed_of_wind,
-				.humidity_value,
-				.visibility_value,
-				.pressure_value {
-					text-align: center;
-					margin-top: 0;
-					font-size: 22px;
-					font-weight: 600;
-				}
-
-				.risk_of_harm,
-				.wind_direction_box,
-				.humidity_level,
-				.visibility_level,
-				.pressure_level {
-					text-align: center;
-					font-weight: 600;
-					line-height: 1.2;
-					margin-bottom: 0;
-					margin-right: 0.3125rem;
-				}
-
-				.unit_of_speed,
-				.humidity_unit,
-				.visibility_unit {
-					font-size: 15px;
-					font-weight: 600;
-				}
-
-
-				.day_transition {
-					display: grid;
-					grid-template-columns: 1fr 2fr;
-					grid-template-rows: 1fr;
-
-					.day_transition_title {
-						align-self: center;
-						padding-top: 0;
-						width: auto;
-						font-size: 18px;
-					}
-
-					.day_transition_box {
-						display: grid;
-						grid-template-columns: repeat(2, 1fr);
-						grid-template-rows: 1fr;
-						justify-items: center;
-
-						.sunrise,
-						.sunset {
-							margin: 0;
-							padding: 0;
-						}
-
-						time {
-							font-weight: 600;
-							font-size: 22px;
-						}
-					}
-				}
-
-
-
-				.uv_index {
-					.risk_of_harm_box {
-						display: flex;
-						justify-content: center;
-						align-items: center;
-
-						.risk_of_harm {
-							margin-bottom: 0;
-							font-weight: 600;
-							width: min-content;
-							line-height: 1.2;
-						}
-					}
-				}
-
-				.wind_status {
-					.wind_direction_box {
-						padding-bottom: 0;
-						font-weight: 600;
-
-						 .wind_direction_icon {
-							display: none;
-						}
-
-						 .wind_direction_description {
-							 span {
-								font-size: $font-size-medium;
-							}
-						}
-					}
-				}
-			}
-
-			.weather_forecast_hourly {
-				margin-top: 0.9375rem;
-
-				.hourly_forecast_list_items {
-					height: 15.625rem;
-
-					.hourly_forecast_item {
-						margin-top: 0.9375rem;
-						height: 85%;
-
-						.hourly_forecast_date,
-						.hourly_forecast_temp {
-							margin-bottom: 0;
-							margin-top: 0;
-							font-size: $font-size-medium;
-							margin: 0.3125rem 0.3125rem;
-						}
-
-						.hourly_forecast_icon {
-							width: 4.6875rem;
-							height: 4.6875rem;
-							margin: 1.25rem 0;
-						}
-					}
-				}
-			}
-
-			.weather_forecast_daily {
-				margin-top: 0.9375rem;
-
-				.daily_forecast_list_items {
-					.daily_forecast_item {
-						margin-top: 0.3125rem;
-
-						.daily_forecast_date,
-						.daily_forecast_temp {
-							margin-bottom: 0;
-							margin-top: 0;
-							font-size: $font-size-medium;
-						}
-
-						.daily_forecast_icon {
-							width: $icon-size-large;
-							height: $icon-size-large;
-							margin: 1.25rem 0;
-						}
-					}
-				}
-			}
-		}
-	}
-
-	@media (min-width: 62rem) and (max-width: 75rem) {
-		.form_field {
-			width: 100%;
-
-			.city_name {
-				min-width: 21.875rem;
-				font-size: 22px;
-			}
-
-			.city_name::placeholder {
-				font-size: 22px;
-			}
-		}
-
-		.weather_forecast {
-			width: 100%;
-
-			.current_container {
-
-				.current_container_icon {
-					width: 12.5rem;
-					height: 12.5rem;
-				}
-
-				.current_temp {
-					font-size: 55px;
-				}
-
-				.current_day,
-				.current_time {
-					font-size: $font-size-large;
-				}
-
-				.feels_like,
-				.clouds,
-				.precipitation,
-				.daily_rain,
-				.daily_snow {
-					font-size: $font-size-large;
-				}
-			}
-
-			.additional_information_container {
-				margin-right: 1.5625rem;
-
-
-				.uv_index,
-				.wind_status,
-				.day_transition {
-					margin-top: 0.9375rem;
-				}
-
-				.uv_index,
-				.wind_status,
-				.day_transition,
-				.humidity,
-				.visibility,
-				.pressure {
-
-					h4 {
-						align-self: center;
-						font-size: $font-size-medium;
-						font-weight: 600;
-					}
-
-					.risk_of_harm,
-					.wind_direction_box,
-					.humidity_level,
-					.visibility_level,
-					.pressure_level {
-						font-size: 22px;
-						text-align: center;
-					}
-
-					.unit_of_speed,
-					.humidity_unit,
-					.visibility_unit {
-						font-size: $font-size-medium;
-						font-weight: 600;
-					}
-
-					.wind_direction_box {
-						margin-bottom: 0.4688rem;
-
-						img {
-							display: none;
-						}
-					}
-				}
-			}
-
-			.weather_forecast_hourly {
-				margin-top: 0.9375rem;
-
-				.hourly_forecast_list_items {
-					margin-bottom: 1.5625rem;
-					height: 16.25rem;
-
-					.hourly_forecast_item {
-						margin-top: 0.9375rem;
-						margin-bottom: 1.5625rem;
-						height: 100%;
-
-
-						.hourly_forecast_date,
-						.hourly_forecast_temp {
-							margin-bottom: 0;
-							margin-top: 0;
-							font-size: $font-size-large;
-							margin: 0.3125rem 0.3125rem;
-						}
-
-						.hourly_forecast_icon {
-							width: $icon-size-large;
-							height: $icon-size-large;
-							margin: 1.5625rem 0;
-						}
-					}
-				}
-			}
-
-			.weather_forecast_daily {
-				margin-top: 0.9375rem;
-
-				.daily_forecast_list_items {
-					.daily_forecast_item {
-						margin-top: 0.9375rem;
-						margin-bottom: 1.5625rem;
-
-						.daily_forecast_date,
-						.daily_forecast_temp {
-							margin-bottom: 0;
-							margin-top: 0;
-							font-size: $font-size-large;
-						}
-
-						.daily_forecast_icon {
-							width: $icon-size-large;
-							height: $icon-size-large;
-							margin: 1.5625rem 0;
-						}
-					}
-				}
-			}
-		}
-	}
-
-	@media (min-width: 75rem) {
-		.form_field {
-			height: 7.5rem;
-
-			.form {
-				.city_name {
-					min-width: 28.125rem;
-					height: 3.4375rem;
-					font-size: 24px;
-				}
-
-				.city_name::placeholder {
-					font-size: 24px;
-				}
-
-				.search_button {
-					width: 3.4375rem;
-					height: 3.4375rem;
-				}
-			}
-		}
-
-		.weather_forecast {
-			.current_container {
-				.current_container_icon {
-					width: 12.5rem;
-					height: 12.5rem;
-				}
-
-				.current_temp {
-					font-size: 75px;
-				}
-
-				.current_day,
-				.current_time {
-					font-size: 30px;
-				}
-
-				.feels_like,
-				.clouds,
-				.precipitation,
-				.daily_rain,
-				.daily_snow {
-					font-size: $font-size-large;
-				}
-			}
-
-			.additional_information_container {
-
-				.uv_index {
-					.risk_of_harm {
-						font-size: 24px;
-						padding-bottom: 0.3125rem;
-					}
-				}
-
-				.wind_status {
-
-					.wind_direction_icon {
-						width: 2.5rem;
-						height: 2.5rem;
-					}
-
-					.unit_of_speed,
-					.wind_direction_box {
-						font-size: 24px;
-						margin-bottom: 0.3125rem;
-					}
-				}
-
-				.uv_index_title,
-				.wind_status_title,
-				.day_transition_title,
-				.humidity_title,
-				.visibility_title,
-				.pressure_title {
-					font-size: 24px;
-					font-weight: 600;
-				}
-
-				.uv_index_icon,
-				.wind_icon,
-				.humidity_icon,
-				.visibility_icon,
-				.pressure_icon {
-					width: $icon-size-medium;
-					height: $icon-size-medium;
-				}
-
-				.day_transition_box {
-
-					.sunrise,
-					.sunset {
-						time {
-							font-size: 28px;
-						}
-
-						.sunrise_icon,
-						.sunset_icon {
-							width: $icon-size-medium;
-							height: $icon-size-medium;
-						}
-					}
-				}
-
-				.humidity_unit,
-				.visibility_unit,
-				.pressure_unit,
-				.humidity_level,
-				.visibility_level,
-				.pressure_level {
-					font-size: 24px;
-				}
-			}
-
-			.daily_hourly_forecast_button {
-
-				 .daily_forecast_button,
-				 .hourly_forecast_button {
-					height: 4.6875rem;
-					font-size: $font-size-large;
-				}
-			}
-
-			.weather_forecast_daily {
-				.daily_forecast_list_items {
-					margin-bottom: 0;
-
-					.daily_forecast_item {
-						margin: 1.5625rem 0.1875rem;
-
-
-						.daily_forecast_date,
-						.daily_forecast_temp {
-							font-size: $font-size-large;
-							margin: 0;
-						}
-
-						.daily_forecast_icon {
-							max-width: $icon-size-large;
-							max-height: $icon-size-large;
-							margin: 1.5625rem 0;
-						}
-					}
-				}
-			}
-
-			.weather_forecast_hourly {
-				margin-top: 0.9375rem;
-
-				.hourly_forecast_list_items {
-
-					margin-bottom: 1.5625rem;
-					height: 17.1875rem;
-
-					.hourly_forecast_item {
-						margin-top: 0.9375rem;
-						margin-bottom: 1.5625rem;
-						height: 90%;
-
-						.hourly_forecast_date,
-						.hourly_forecast_temp {
-							margin-bottom: 0;
-							margin-top: 0;
-							font-size: 25px;
-							margin: 0.3125rem 0.3125rem;
-						}
-
-						.hourly_forecast_icon {
-							width: $icon-size-large;
-							height: $icon-size-large;
-							margin: 1.5625rem 0;
-						}
-					}
-				}
-			}
-		}
-	}
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-image: url('../../assets/misc-images/bg-main.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  & .form_field {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    width: 80%;
+    background: $background-blur;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+
+    & h2 {
+      font-family: $font-primary;
+      margin-left: 0.9375rem;
+      font-weight: 600;
+      font-size: clamp(1rem, 4vw, 2.8125rem);
+      line-height: 2.625rem;
+      color: $primary-color;
+    }
+
+    & .form {
+      display: flex;
+      justify-content: end;
+      align-items: center;
+      width: auto;
+      height: 5rem;
+      margin-right: 0.9375rem;
+
+      & .city_name {
+        display: block;
+        height: 2.625rem;
+        width: 100%;
+        background: rgba(0, 51, 102, 0.7);
+        color: $secondary-color;
+        outline: none;
+        border: none;
+        border-top-left-radius: 0.625rem;
+        border-bottom-left-radius: 0.625rem;
+        padding-left: 0.625rem;
+        text-transform: capitalize;
+
+        &::placeholder {
+          color: $secondary-color;
+        }
+      }
+
+      & .search_button {
+        width: 2.625rem;
+        height: 2.625rem;
+        border: none;
+        outline: none;
+        background: rgba(0, 51, 102, 1);
+        border-top-right-radius: 0.625rem;
+        border-bottom-right-radius: 0.625rem;
+      }
+    }
+  }
+
+  .weather_forecast {
+    padding: 0;
+    box-sizing: border-box;
+    margin: 0 auto;
+    width: 80%;
+    height: 100%;
+    display: grid;
+    background: $background-blur;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    color: $primary-color;
+
+    & .current_container {
+      margin: 0;
+      padding: 0;
+      display: grid;
+      align-content: start;
+      align-items: start;
+
+      & .current_container_icon {
+        display: block;
+        margin: 0.9375rem 0 0 1.5625rem;
+        width: 9.375rem;
+        height: 9.375rem;
+        border-radius: 1.5625rem;
+        background: rgba(255, 255, 255, 0.4);
+      }
+
+      & .current_temp {
+        margin: 3.125rem 0 0.9375rem 1.875rem;
+        font-size: 56px;
+        font-weight: normal;
+      }
+
+      & .current_date {
+        width: 80%;
+        margin: 0 1.875rem;
+        display: block;
+
+        & .current_day {
+          color: $primary-color;
+          font-family: $font-secondary;
+          margin-right: 0.625rem;
+        }
+
+        & .current_time {
+          color: #aaaab1;
+          font-family: $font-secondary;
+        }
+      }
+
+      & .clouds_precipitation_info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        margin: 2.1875rem 0 3.125rem 1.875rem;
+
+        & .clouds,
+        & .precipitation,
+        & .feels_like {
+          line-height: 1.2;
+          font-family: $font-secondary;
+          padding-bottom: 0.3125rem;
+        }
+
+        & .clouds,
+        & .feels_like,
+        & .precipitation,
+        & .daily_rain {
+          margin-bottom: 0.9375rem;
+        }
+
+        & .daily_rain,
+        & .daily_snow {
+          line-height: 1.2;
+          font-family: $font-secondary;
+          padding-bottom: 0.3125rem;
+        }
+      }
+    }
+
+    & .additional_information_container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+
+      & .clouds {
+        display: none;
+      }
+
+      & .risk_of_harm {
+        font-size: $font-size-medium;
+      }
+
+      & .humidity,
+      & .pressure,
+      & .visibility {
+        display: grid;
+        grid-template-rows: repeat(4, 1fr);
+        grid-template-columns: 1fr;
+      }
+
+      & .uv_index_title,
+      & .wind_status_title,
+      & .day_transition_title,
+      & .humidity_title,
+      & .visibility_title,
+      & .pressure_title {
+        align-self: flex-start;
+        padding-top: 0.9375rem;
+        padding-left: 0.9375rem;
+        font-size: $font-size-small;
+      }
+
+      & .daily_value,
+      & .speed_of_wind,
+      & .humidity_value,
+      & .pressure_value,
+      & .visibility_value,
+      & .humidity_value {
+        font-size: 35px;
+        margin-top: 0.625rem;
+      }
+
+      & .pressure_level,
+      & .visibility_level,
+      & .humidity_level {
+        margin-bottom: 1.25rem;
+        font-size: $font-size-medium;
+        text-align: center;
+      }
+
+      & .humidity_unit,
+      & .pressure_unit,
+      & .visibility_unit {
+        font-size: $font-size-medium;
+      }
+
+      & .uv_index,
+      & .wind_status,
+      & .visibility,
+      &.day_transition,
+      & .humidity,
+      & .pressure {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0.625rem;
+        border-radius: 1.5625rem;
+        background: rgba(0, 51, 102, 0.4);
+        color: $primary-color;
+
+        & .risk_of_harm {
+          font-size: $font-size-medium;
+          font-weight: 500;
+          margin-bottom: 1.25rem;
+        }
+
+        & .wind_direction_box {
+          padding-bottom: 0.625rem;
+          font-weight: 500;
+          color: #fff;
+
+          .wind_direction_description {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+
+            & .wind_direction_icon {
+              border-radius: 50%;
+              margin-left: 1.25rem;
+              padding: 0.3125rem;
+              line-height: 1;
+              background-color: rgb(255, 255, 255);
+            }
+          }
+        }
+      }
+
+      .day_transition {
+        display: flex;
+        flex-direction: column;
+        margin: 0.625rem;
+        border-radius: 1.5625rem;
+        background: rgba(0, 51, 102, 0.4);
+        color: $primary-color;
+        justify-content: space-between;
+
+        & .day_transition_box {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          & .sunrise,
+          & .sunset {
+            font-size: 18px;
+            font-weight: 500;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin: 2.1875rem auto;
+
+            & .sunrise_icon,
+            & .sunset_icon {
+              margin-right: 0.625rem;
+            }
+          }
+
+          & .sunrise_small,
+          & .sunset_small {
+            display: none;
+          }
+        }
+      }
+    }
+
+    & .daily_hourly_forecast_button {
+      grid-row: 2/3;
+      grid-column: 1/3;
+      margin: 0.9375rem 0 0.9375rem 0;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+
+      & .daily_forecast_button,
+      & .hourly_forecast_button {
+        cursor: pointer;
+        font-size: $font-size-medium;
+        height: 3.125rem;
+        width: 100%;
+        background: $background-color;
+        box-shadow: 2px 2px 2px 2px rgb(0, 51, 102);
+        color: $primary-color;
+        border-radius: 0.9375rem;
+        margin: 0 0.625rem;
+        padding: 0;
+
+        &:hover {
+          background-color: rgba(2, 88, 173, 0.6);
+          -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+          cursor: pointer;
+        }
+      }
+    }
+
+    & .weather_forecast_daily {
+      font-size: $font-size-medium;
+      grid-column: 1/3;
+      grid-row: 3/4;
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 1.25rem;
+
+      & .daily_forecast_list_items {
+        width: 100%;
+        margin: 0.3125rem 0.3125rem 0.9375rem 0.3125rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+
+        & .daily_forecast_item {
+          background: rgba(0, 51, 102, 0.3);
+          flex: 1 0 auto;
+          list-style: none;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          border-radius: 0.3125rem;
+          padding: 0.625rem 0;
+          margin: 0 0.1875rem;
+
+          & .daily_forecast_date,
+          & .daily_forecast_temp,
+          & .daily_forecast_icon {
+            margin-top: 0.9375rem;
+            color: $primary-color;
+          }
+
+          & .daily_forecast_temp {
+            margin-bottom: 0.9375rem;
+          }
+
+          & .daily_forecast_icon {
+            background-color: rgb(225, 225, 245);
+            border-radius: 0.625rem;
+            max-width: $icon-size-medium;
+            max-height: $icon-size-medium;
+          }
+
+          &:hover {
+            background: rgba(2, 88, 173, 0.6);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    & .weather_forecast_hourly {
+      grid-column: 1/3;
+      grid-row: 3/4;
+      font-size: 1.25rem;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      gap: 0.3125rem;
+      overflow-x: hidden;
+
+      & .hourly_forecast_arrow_prev {
+        background-image: url('../../assets/misc-images/arrow_left.png');
+      }
+
+      & .hourly_forecast_arrow_next {
+        background-image: url('../../assets/misc-images/arrow_right.png');
+      }
+
+      & .hourly_forecast_arrow_prev,
+      & .hourly_forecast_arrow_next {
+        align-self: self-start;
+        flex: 0 0 2.5rem;
+        height: 2.5rem;
+        background-color: $background-color;
+        margin: 0 0.3125rem;
+        border-radius: 0.3125rem;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      & .hourly_forecast_list_items {
+        border-top: 2.5rem solid $background-color;
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        overflow-x: scroll;
+        overflow-y: hidden;
+
+        & .hourly_forecast_item {
+          flex: 0 0 auto;
+          list-style: none;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin: 0.3125rem;
+          border-radius: 0.3125rem;
+          background: rgba(0, 51, 102, 0.3);
+
+          & .hourly_forecast_date,
+          & .hourly_forecast_temp,
+          & .hourly_forecast_icon {
+            margin-top: 1.25rem;
+            color: $primary-color;
+          }
+
+          & .hourly_forecast_icon {
+            background-color: rgb(225, 225, 245);
+            border-radius: 0.3125rem;
+          }
+
+          &:hover {
+            background: rgba(2, 88, 173, 0.6);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 36rem) {
+    .form_field {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(2, 3.125rem);
+      width: 100%;
+      height: auto;
+
+      h2 {
+        grid-row: 2/3;
+      }
+
+      .form {
+        grid-row: 1/2;
+        margin-left: 0.9375rem;
+        justify-content: start;
+
+        .city_name {
+          height: 2.1875rem;
+          width: 100%;
+        }
+
+        .search_button {
+          width: 2.1875rem;
+          height: 2.1875rem;
+
+          img {
+            width: 1.5625rem;
+            height: 1.5625rem;
+          }
+        }
+      }
+    }
+
+    .weather_forecast {
+      width: 100%;
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(4);
+
+      .current_container {
+        grid-column: 1/3;
+        grid-row: 1/2;
+
+        .clouds_precipitation_info {
+          margin: 1.5625rem 0 0.9375rem 1.875rem;
+        }
+
+        .current_container_icon {
+          width: 6.25rem;
+          height: 6.25rem;
+        }
+
+        .current_temp {
+          font-size: 30px;
+          margin-top: 1.25rem;
+        }
+
+        .current_day,
+        .current_time {
+          font-size: $font-size-small;
+          font-weight: 600;
+        }
+
+        .feels_like,
+        .clouds,
+        .precipitation,
+        .daily_rain,
+        .daily_snow {
+          font-size: $font-size-small;
+          font-weight: 600;
+        }
+      }
+
+      .additional_information_container {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, 4.6875rem);
+        grid-column: 1/3;
+        grid-row: 2/3;
+
+        .uv_index,
+        .wind_status,
+        .day_transition,
+        .humidity,
+        .visibility,
+        .pressure {
+          height: 3.4375rem;
+        }
+
+        .wind_status {
+          background-image: url('../../assets/weather-images/background-images/wind-status.jpg');
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: cover;
+        }
+
+        .day_transition {
+          background-image: url('../../assets/weather-images/background-images/dat-transition.jpg');
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: cover;
+        }
+
+        .humidity {
+          background-image: url('../../assets/weather-images/background-images/humidity.jpg');
+          background-repeat: no-repeat;
+          background-position: center bottom;
+          background-size: cover;
+        }
+
+        .visibility {
+          background-image: url('../../assets/weather-images/background-images/visibility.jpg');
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: cover;
+        }
+
+        .pressure {
+          background-image: url('../../assets/weather-images/background-images/pressure.jpg');
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: cover;
+        }
+
+        .uv_index,
+        .wind_status,
+        .humidity,
+        .visibility,
+        .pressure {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          grid-template-rows: 1fr;
+        }
+
+        .uv_index_title,
+        .wind_status_title,
+        .humidity_title,
+        .visibility_title,
+        .pressure_title,
+        .day_transition_title {
+          align-self: center;
+          padding-top: 0;
+          font-size: 15px;
+        }
+
+        .uv_index_icon,
+        .wind_icon,
+        .humidity_icon,
+        .visibility_icon,
+        .pressure_icon {
+          display: none;
+        }
+
+        .daily_value,
+        .speed_of_wind,
+        .humidity_value,
+        .visibility_value,
+        .pressure_value {
+          text-align: center;
+          margin-top: 0;
+          font-size: 14px;
+          font-weight: 500;
+        }
+
+        .risk_of_harm,
+        .wind_direction_box,
+        .humidity_level,
+        .visibility_level,
+        .pressure_level {
+          text-align: center;
+          font-weight: 600;
+          line-height: 1.2;
+          margin-bottom: 0;
+          margin-right: 0.3125rem;
+          font-size: 14px;
+        }
+
+        .humidity_unit,
+        .visibility_unit,
+        .pressure_unit,
+        .unit_of_speed {
+          font-size: 14px;
+          font-weight: 600;
+        }
+
+        .day_transition {
+          display: grid;
+          grid-template-columns: 1fr 2fr;
+          grid-template-rows: 1fr;
+
+          .day_transition_title {
+            align-self: center;
+            padding-top: 0;
+            width: auto;
+            font-size: 14px;
+          }
+
+          .day_transition_box {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: 1fr;
+            justify-items: center;
+
+            .sunrise,
+            .sunset {
+              margin: 0;
+              padding: 0;
+
+              .sunrise_icon,
+              .sunset_icon {
+                width: 2.8125rem;
+                height: 2.8125rem;
+              }
+            }
+
+            time {
+              font-weight: 600;
+              font-size: 14px;
+            }
+          }
+        }
+
+        .wind_direction_icon {
+          display: none;
+        }
+
+        .uv_index {
+          .risk_of_harm_box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .risk_of_harm {
+              margin-bottom: 0;
+              font-weight: 600;
+              width: min-content;
+              line-height: 1.2;
+              font-size: 14px;
+            }
+          }
+        }
+
+        .wind_status {
+          .wind_direction_box {
+            padding-bottom: 0;
+            font-weight: 600;
+          }
+        }
+      }
+
+      .daily_hourly_forecast_button {
+        grid-column: 1/3;
+        grid-row: 3/4;
+
+        .daily_forecast_button,
+        .hourly_forecast_button {
+          height: 2.1875rem;
+          font-size: 18px;
+          border-radius: 0.625rem;
+        }
+      }
+
+      .weather_forecast_hourly {
+        grid-column: 1/3;
+        grid-row: 4/5;
+        margin-top: 0.9375rem;
+        height: 11.25rem;
+
+        .hourly_forecast_list_items {
+          height: 100%;
+
+          .hourly_forecast_item {
+            margin-top: 0.9375rem;
+
+            .hourly_forecast_date,
+            .hourly_forecast_temp {
+              margin-bottom: 0;
+              margin-top: 0;
+              font-size: 13px;
+              margin: 0.3125rem 0.3125rem;
+            }
+
+            .hourly_forecast_icon {
+              width: $icon-size-small;
+              height: $icon-size-small;
+              margin: 1.25rem 0;
+            }
+          }
+        }
+      }
+
+      .weather_forecast_daily {
+        margin-top: 0.9375rem;
+        grid-column: 1/3;
+        grid-row: 4/5;
+
+        .daily_forecast_list_items {
+          .daily_forecast_item {
+            margin-top: 0.3125rem;
+
+            .daily_forecast_date,
+            .daily_forecast_temp {
+              margin-bottom: 0;
+              margin-top: 0;
+              font-size: 13px;
+            }
+
+            .daily_forecast_icon {
+              width: $icon-size-small;
+              height: $icon-size-small;
+              margin: 1.25rem 0;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (min-width: 36rem) and (max-width: 48rem) {
+    .form_field {
+      width: 100%;
+      height: auto;
+      display: grid;
+      grid-template-rows: repeat(2, 3.125rem);
+      grid-template-columns: 1fr;
+      align-content: center;
+
+      h2 {
+        grid-row: 2/3;
+      }
+
+      .form {
+        margin: 0 0.9375rem;
+        grid-row: 1/2;
+        grid-column: 1/2;
+
+        .city_name {
+          height: 2.1875rem;
+          min-width: 15.625rem;
+          font-size: 17px;
+        }
+
+        .city_name::placeholder {
+          font-size: 17px;
+        }
+
+        .search_button {
+          width: 2.1875rem;
+          height: 2.1875rem;
+
+          img {
+            width: $icon-size-small;
+            height: $icon-size-small;
+          }
+        }
+      }
+    }
+
+    .weather_forecast {
+      width: 100%;
+      grid-template-columns: 1fr 2fr;
+
+      .current_container {
+        .current_container_icon {
+          width: 8.125rem;
+          height: 8.125rem;
+        }
+
+        .current_temp {
+          font-size: 45px;
+        }
+
+        .current_day,
+        .current_time {
+          font-size: 18px;
+        }
+
+        .feels_like,
+        .clouds,
+        .precipitation,
+        .daily_rain,
+        .daily_snow {
+          font-size: 18px;
+        }
+      }
+
+      .additional_information_container {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, 6.25rem);
+
+        .wind_status {
+          background-image: url('../../assets/weather-images/background-images/wind-status.jpg');
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: cover;
+        }
+
+        .day_transition {
+          background-image: url('../../assets/weather-images/background-images/dat-transition.jpg');
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: cover;
+        }
+
+        .humidity {
+          background-image: url('../../assets/weather-images/background-images/humidity.jpg');
+          background-repeat: no-repeat;
+          background-position: center bottom;
+          background-size: cover;
+        }
+
+        .visibility {
+          background-image: url('../../assets/weather-images/background-images/visibility.jpg');
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: cover;
+        }
+
+        .pressure {
+          background-image: url('../../assets/weather-images/background-images/pressure.jpg');
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: cover;
+        }
+
+        .uv_index,
+        .wind_status,
+        .humidity,
+        .visibility,
+        .pressure {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          grid-template-rows: 1fr;
+        }
+
+        .uv_index_title,
+        .wind_status_title,
+        .humidity_title,
+        .visibility_title,
+        .pressure_title,
+        .day_transition_title {
+          align-self: center;
+          padding-top: 0;
+          font-size: $font-size-small;
+        }
+
+        .uv_index_icon,
+        .wind_icon,
+        .humidity_icon,
+        .visibility_icon,
+        .pressure_icon {
+          display: none;
+        }
+
+        .daily_value,
+        .speed_of_wind,
+        .humidity_value,
+        .visibility_value,
+        .pressure_value {
+          text-align: center;
+          margin-top: 0;
+          font-size: 18px;
+          font-weight: 500;
+        }
+
+        .risk_of_harm,
+        .wind_direction_box,
+        .humidity_level,
+        .visibility_level,
+        .pressure_level {
+          text-align: center;
+          font-weight: 600;
+          line-height: 1.2;
+          margin-bottom: 0;
+          margin-right: 0.3125rem;
+          font-size: $font-size-small;
+        }
+
+        .humidity_unit,
+        .visibility_unit,
+        .pressure_unit,
+        .unit_of_speed {
+          font-size: $font-size-small;
+          font-weight: 600;
+        }
+
+        .day_transition {
+          display: grid;
+          grid-template-columns: 1fr 2fr;
+          grid-template-rows: 1fr;
+
+          .day_transition_title {
+            align-self: center;
+            padding-top: 0;
+            width: auto;
+            font-size: $font-size-small;
+          }
+
+          .day_transition_box {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: 1fr;
+            justify-items: center;
+
+            .sunrise,
+            .sunset {
+              margin: 0;
+              padding: 0;
+
+              .sunrise_icon,
+              .sunset_icon {
+                width: 2.8125rem;
+                height: 2.8125rem;
+              }
+            }
+
+            time {
+              font-weight: 600;
+              font-size: $font-size-small;
+            }
+          }
+        }
+
+        .wind_direction_icon {
+          display: none;
+        }
+
+        .uv_index {
+          .risk_of_harm_box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .risk_of_harm {
+              margin-bottom: 0;
+              font-weight: 600;
+              width: min-content;
+              line-height: 1.2;
+              font-size: $font-size-small;
+            }
+          }
+        }
+
+        .wind_status {
+          .wind_direction_box {
+            padding-bottom: 0;
+            font-weight: 600;
+          }
+        }
+      }
+
+      .weather_forecast_hourly {
+        margin-top: 0.9375rem;
+        height: 14.6875rem;
+
+        .hourly_forecast_list_items {
+          height: 100%;
+
+          .hourly_forecast_item {
+            margin-top: 0.9375rem;
+
+            .hourly_forecast_date,
+            .hourly_forecast_temp {
+              margin-bottom: 0;
+              margin-top: 0;
+              font-size: 22px;
+              margin: 0.3125rem 0.3125rem;
+            }
+
+            .hourly_forecast_icon {
+              width: 4.375rem;
+              height: 4.375rem;
+              margin: 1.25rem 0;
+            }
+          }
+        }
+      }
+
+      .weather_forecast_daily {
+        margin-top: 0.9375rem;
+
+        .daily_forecast_list_items {
+          .daily_forecast_item {
+            margin-top: 0.3125rem;
+
+            .daily_forecast_date,
+            .daily_forecast_temp {
+              margin-bottom: 0;
+              margin-top: 0;
+              font-size: $font-size-medium;
+            }
+
+            .daily_forecast_icon {
+              width: $icon-size-large;
+              height: $icon-size-large;
+              margin: 1.25rem 0;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (min-width: 48rem) and (max-width: 62rem) {
+    .form_field {
+      width: 100%;
+
+      .city_name {
+        min-width: 18.75rem;
+        font-size: $font-size-medium;
+      }
+
+      .city_name::placeholder {
+        font-size: $font-size-medium;
+      }
+    }
+
+    .weather_forecast {
+      width: 100%;
+
+      .current_container {
+        .current_container_icon {
+          width: 12.5rem;
+          height: 12.5rem;
+        }
+
+        .current_temp {
+          font-size: 50px;
+        }
+
+        .current_day,
+        .current_time {
+          font-size: $font-size-medium;
+        }
+
+        .feels_like,
+        .clouds,
+        .precipitation,
+        .daily_rain,
+        .daily_snow {
+          font-size: $font-size-medium;
+        }
+      }
+
+      .additional_information_container {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, 6.25rem);
+
+        .wind_status {
+          background-image: url('../../assets/weather-images/background-images/wind-status.jpg');
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: cover;
+        }
+
+        .day_transition {
+          background-image: url('../../assets/weather-images/background-images/dat-transition.jpg');
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: cover;
+        }
+
+        .humidity {
+          background-image: url('../../assets/weather-images/background-images/humidity.jpg');
+          background-repeat: no-repeat;
+          background-position: center bottom;
+          background-size: cover;
+        }
+
+        .visibility {
+          background-image: url('../../assets/weather-images/background-images/visibility.jpg');
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: cover;
+        }
+
+        .pressure {
+          background-image: url('../../assets/weather-images/background-images/pressure.jpg');
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: cover;
+        }
+
+        .uv_index,
+        .wind_status,
+        .humidity,
+        .visibility,
+        .pressure {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          grid-template-rows: 1fr;
+        }
+
+        .uv_index_title,
+        .wind_status_title,
+        .humidity_title,
+        .visibility_title,
+        .pressure_title,
+        .day_transition_title {
+          align-self: center;
+          padding-top: 0;
+          font-size: 18px;
+        }
+
+        .uv_index_icon,
+        .wind_icon,
+        .humidity_icon,
+        .visibility_icon,
+        .pressure_icon {
+          display: none;
+        }
+
+        .daily_value,
+        .speed_of_wind,
+        .humidity_value,
+        .visibility_value,
+        .pressure_value {
+          text-align: center;
+          margin-top: 0;
+          font-size: 22px;
+          font-weight: 600;
+        }
+
+        .risk_of_harm,
+        .wind_direction_box,
+        .humidity_level,
+        .visibility_level,
+        .pressure_level {
+          text-align: center;
+          font-weight: 600;
+          line-height: 1.2;
+          margin-bottom: 0;
+          margin-right: 0.3125rem;
+        }
+
+        .unit_of_speed,
+        .humidity_unit,
+        .visibility_unit {
+          font-size: 15px;
+          font-weight: 600;
+        }
+
+        .day_transition {
+          display: grid;
+          grid-template-columns: 1fr 2fr;
+          grid-template-rows: 1fr;
+
+          .day_transition_title {
+            align-self: center;
+            padding-top: 0;
+            width: auto;
+            font-size: 18px;
+          }
+
+          .day_transition_box {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: 1fr;
+            justify-items: center;
+
+            .sunrise,
+            .sunset {
+              margin: 0;
+              padding: 0;
+            }
+
+            time {
+              font-weight: 600;
+              font-size: 22px;
+            }
+          }
+        }
+
+        .uv_index {
+          .risk_of_harm_box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .risk_of_harm {
+              margin-bottom: 0;
+              font-weight: 600;
+              width: min-content;
+              line-height: 1.2;
+            }
+          }
+        }
+
+        .wind_status {
+          .wind_direction_box {
+            padding-bottom: 0;
+            font-weight: 600;
+
+            .wind_direction_icon {
+              display: none;
+            }
+
+            .wind_direction_description {
+              span {
+                font-size: $font-size-medium;
+              }
+            }
+          }
+        }
+      }
+
+      .weather_forecast_hourly {
+        margin-top: 0.9375rem;
+
+        .hourly_forecast_list_items {
+          height: 15.625rem;
+
+          .hourly_forecast_item {
+            margin-top: 0.9375rem;
+            height: 85%;
+
+            .hourly_forecast_date,
+            .hourly_forecast_temp {
+              margin-bottom: 0;
+              margin-top: 0;
+              font-size: $font-size-medium;
+              margin: 0.3125rem 0.3125rem;
+            }
+
+            .hourly_forecast_icon {
+              width: 4.6875rem;
+              height: 4.6875rem;
+              margin: 1.25rem 0;
+            }
+          }
+        }
+      }
+
+      .weather_forecast_daily {
+        margin-top: 0.9375rem;
+
+        .daily_forecast_list_items {
+          .daily_forecast_item {
+            margin-top: 0.3125rem;
+
+            .daily_forecast_date,
+            .daily_forecast_temp {
+              margin-bottom: 0;
+              margin-top: 0;
+              font-size: $font-size-medium;
+            }
+
+            .daily_forecast_icon {
+              width: $icon-size-large;
+              height: $icon-size-large;
+              margin: 1.25rem 0;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (min-width: 62rem) and (max-width: 75rem) {
+    .form_field {
+      width: 100%;
+
+      .city_name {
+        min-width: 21.875rem;
+        font-size: 22px;
+      }
+
+      .city_name::placeholder {
+        font-size: 22px;
+      }
+    }
+
+    .weather_forecast {
+      width: 100%;
+
+      .current_container {
+        .current_container_icon {
+          width: 12.5rem;
+          height: 12.5rem;
+        }
+
+        .current_temp {
+          font-size: 55px;
+        }
+
+        .current_day,
+        .current_time {
+          font-size: $font-size-large;
+        }
+
+        .feels_like,
+        .clouds,
+        .precipitation,
+        .daily_rain,
+        .daily_snow {
+          font-size: $font-size-large;
+        }
+      }
+
+      .additional_information_container {
+        margin-right: 1.5625rem;
+
+        .uv_index,
+        .wind_status,
+        .day_transition {
+          margin-top: 0.9375rem;
+        }
+
+        .uv_index,
+        .wind_status,
+        .day_transition,
+        .humidity,
+        .visibility,
+        .pressure {
+          h4 {
+            align-self: center;
+            font-size: $font-size-medium;
+            font-weight: 600;
+          }
+
+          .risk_of_harm,
+          .wind_direction_box,
+          .humidity_level,
+          .visibility_level,
+          .pressure_level {
+            font-size: 22px;
+            text-align: center;
+          }
+
+          .unit_of_speed,
+          .humidity_unit,
+          .visibility_unit {
+            font-size: $font-size-medium;
+            font-weight: 600;
+          }
+
+          .wind_direction_box {
+            margin-bottom: 0.4688rem;
+
+            img {
+              display: none;
+            }
+          }
+        }
+      }
+
+      .weather_forecast_hourly {
+        margin-top: 0.9375rem;
+
+        .hourly_forecast_list_items {
+          margin-bottom: 1.5625rem;
+          height: 16.25rem;
+
+          .hourly_forecast_item {
+            margin-top: 0.9375rem;
+            margin-bottom: 1.5625rem;
+            height: 100%;
+
+            .hourly_forecast_date,
+            .hourly_forecast_temp {
+              margin-bottom: 0;
+              margin-top: 0;
+              font-size: $font-size-large;
+              margin: 0.3125rem 0.3125rem;
+            }
+
+            .hourly_forecast_icon {
+              width: $icon-size-large;
+              height: $icon-size-large;
+              margin: 1.5625rem 0;
+            }
+          }
+        }
+      }
+
+      .weather_forecast_daily {
+        margin-top: 0.9375rem;
+
+        .daily_forecast_list_items {
+          .daily_forecast_item {
+            margin-top: 0.9375rem;
+            margin-bottom: 1.5625rem;
+
+            .daily_forecast_date,
+            .daily_forecast_temp {
+              margin-bottom: 0;
+              margin-top: 0;
+              font-size: $font-size-large;
+            }
+
+            .daily_forecast_icon {
+              width: $icon-size-large;
+              height: $icon-size-large;
+              margin: 1.5625rem 0;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (min-width: 75rem) {
+    .form_field {
+      height: 7.5rem;
+
+      .form {
+        .city_name {
+          min-width: 28.125rem;
+          height: 3.4375rem;
+          font-size: 24px;
+        }
+
+        .city_name::placeholder {
+          font-size: 24px;
+        }
+
+        .search_button {
+          width: 3.4375rem;
+          height: 3.4375rem;
+        }
+      }
+    }
+
+    .weather_forecast {
+      .current_container {
+        .current_container_icon {
+          width: 12.5rem;
+          height: 12.5rem;
+        }
+
+        .current_temp {
+          font-size: 75px;
+        }
+
+        .current_day,
+        .current_time {
+          font-size: 30px;
+        }
+
+        .feels_like,
+        .clouds,
+        .precipitation,
+        .daily_rain,
+        .daily_snow {
+          font-size: $font-size-large;
+        }
+      }
+
+      .additional_information_container {
+        .uv_index {
+          .risk_of_harm {
+            font-size: 24px;
+            padding-bottom: 0.3125rem;
+          }
+        }
+
+        .wind_status {
+          .wind_direction_icon {
+            width: 2.5rem;
+            height: 2.5rem;
+          }
+
+          .unit_of_speed,
+          .wind_direction_box {
+            font-size: 24px;
+            margin-bottom: 0.3125rem;
+          }
+        }
+
+        .uv_index_title,
+        .wind_status_title,
+        .day_transition_title,
+        .humidity_title,
+        .visibility_title,
+        .pressure_title {
+          font-size: 24px;
+          font-weight: 600;
+        }
+
+        .uv_index_icon,
+        .wind_icon,
+        .humidity_icon,
+        .visibility_icon,
+        .pressure_icon {
+          width: $icon-size-medium;
+          height: $icon-size-medium;
+        }
+
+        .day_transition_box {
+          .sunrise,
+          .sunset {
+            time {
+              font-size: 28px;
+            }
+
+            .sunrise_icon,
+            .sunset_icon {
+              width: $icon-size-medium;
+              height: $icon-size-medium;
+            }
+          }
+        }
+
+        .humidity_unit,
+        .visibility_unit,
+        .pressure_unit,
+        .humidity_level,
+        .visibility_level,
+        .pressure_level {
+          font-size: 24px;
+        }
+      }
+
+      .daily_hourly_forecast_button {
+        .daily_forecast_button,
+        .hourly_forecast_button {
+          height: 4.6875rem;
+          font-size: $font-size-large;
+        }
+      }
+
+      .weather_forecast_daily {
+        .daily_forecast_list_items {
+          margin-bottom: 0;
+
+          .daily_forecast_item {
+            margin: 1.5625rem 0.1875rem;
+
+            .daily_forecast_date,
+            .daily_forecast_temp {
+              font-size: $font-size-large;
+              margin: 0;
+            }
+
+            .daily_forecast_icon {
+              max-width: $icon-size-large;
+              max-height: $icon-size-large;
+              margin: 1.5625rem 0;
+            }
+          }
+        }
+      }
+
+      .weather_forecast_hourly {
+        margin-top: 0.9375rem;
+
+        .hourly_forecast_list_items {
+          margin-bottom: 1.5625rem;
+          height: 17.1875rem;
+
+          .hourly_forecast_item {
+            margin-top: 0.9375rem;
+            margin-bottom: 1.5625rem;
+            height: 90%;
+
+            .hourly_forecast_date,
+            .hourly_forecast_temp {
+              margin-bottom: 0;
+              margin-top: 0;
+              font-size: 25px;
+              margin: 0.3125rem 0.3125rem;
+            }
+
+            .hourly_forecast_icon {
+              width: $icon-size-large;
+              height: $icon-size-large;
+              margin: 1.5625rem 0;
+            }
+          }
+        }
+      }
+    }
+  }
 }
