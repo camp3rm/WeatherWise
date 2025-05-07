@@ -28,7 +28,7 @@ export const WeatherProvider = ({ children }) => {
       }
     };
     getFetchingData();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
   const handleSubmit = async (value) => {
     try {
       const sanitizedValue = value?.trim();
