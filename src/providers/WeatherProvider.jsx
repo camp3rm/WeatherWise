@@ -53,26 +53,26 @@ export const WeatherProvider = ({ children }) => {
   const fetchWeather = async ({ latitude, longitude }) => {
     if (!latitude || !longitude) {
       throw new Error('Invalid coordinates');
-    
     }
     const weatherUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&exclude=minutely&appid=${API_KEY}&units=metric`;
-    
-      const [weatherResponse, cityResponse] = await Promise.allSettled([
-        axios.get(weatherUrl),
-        getCurrentCity({ latitude, longitude }),
-      ]);
 
-      if (weatherResponse.status === 'fulfilled' ) {
-        if (cityResponse.status === 'fulfilled') {
-          setWeatherCity(cityResponse.value);
-        }
-        setWeatherData(weatherResponse.value.data);
-      } else {
-        throw new Error('Data fetch is failed');
+    const [weatherResponse, cityResponse] = await Promise.allSettled([
+      axios.get(weatherUrl),
+      getCurrentCity({ latitude, longitude }),
+    ]);
+
+    if (weatherResponse.status === 'fulfilled') {
+      if (cityResponse.status === 'fulfilled') {
+        setWeatherCity(cityResponse.value);
       }
-  return (
-    <WeatherContext.Provider value={{ weatherData, isLoading, handleSubmit, weatherCity }}>
-      {children}
-    </WeatherContext.Provider>
-  );
-};
+      setWeatherData(weatherResponse.value.data);
+    } else {
+      throw new Error('Data fetch is failed');
+    }
+    return (
+      <WeatherContext.Provider value={{ weatherData, isLoading, handleSubmit, weatherCity }}>
+        {children}
+      </WeatherContext.Provider>
+    );
+  };
+}
