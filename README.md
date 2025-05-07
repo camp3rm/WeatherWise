@@ -5,11 +5,11 @@
 An interactive weather dashboard built with React. It provides users with current weather conditions, including temperature, weather icon, "feels like" temperature, cloudiness, chance of precipitation, as well as detailed information on UV index, wind, sunrise/sunset times, humidity, visibility, and pressure. Forecasts for the upcoming days and an hourly forecast are also available. It uses the OpenWeatherMap API to retrieve data.
 
 ## Functionality:
-🔍 City Search — find the weather by entering any city name.
-🌡️ Current Weather — get real-time temperature, weather conditions, humidity, wind, and more.
-📅 Daily Forecast — view the weather forecast for several upcoming days.
-⏰ Hourly Forecast — detailed weather breakdown by the hour.
-📍 Geolocation — automatically detect your location to show local weather.
+🔍 City Search — find the weather by entering any city name.  
+🌡️ Current Weather — get real-time temperature, weather conditions, humidity, wind, and more.  
+📅 Daily Forecast — view the weather forecast for several upcoming days.  
+⏰ Hourly Forecast — detailed weather breakdown by the hour.  
+📍 Geolocation — automatically detect your location to show local weather.  
 
 ## Built on:
 ![React](https://img.shields.io/badge/-React-blue?logo=react&logoColor=white)
