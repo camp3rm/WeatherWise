@@ -13,7 +13,7 @@ export const getCurrentCoordinates = async () =>
 
 export const getCurrentCity = async ({ latitude, longitude }) => {
   const response = await axios.get(
-    `http://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=5&appid=${API_KEY}`
+    `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=5&appid=${API_KEY}`
   );
 
   return response.data[0].name;
