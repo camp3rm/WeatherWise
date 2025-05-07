@@ -20,9 +20,7 @@ export const WeatherProvider = ({ children }) => {
       } catch (error) {
         try {
           await fetchWeather({ latitude: 52.232, longitude: 21.0067 });
-        } catch (error) {
-          alert(error);
-        }
+        } catch (error) {}
       } finally {
         setIsLoading(false);
       }
@@ -69,10 +67,10 @@ export const WeatherProvider = ({ children }) => {
     } else {
       throw new Error('Data fetch is failed');
     }
-    return (
-      <WeatherContext.Provider value={{ weatherData, isLoading, handleSubmit, weatherCity }}>
-        {children}
-      </WeatherContext.Provider>
-    );
   };
+  return (
+    <WeatherContext.Provider value={{ weatherData, isLoading, handleSubmit, weatherCity }}>
+      {children}
+    </WeatherContext.Provider>
+  );
 }
