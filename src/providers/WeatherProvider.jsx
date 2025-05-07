@@ -21,7 +21,7 @@ export const WeatherProvider = ({ children }) => {
         try {
           await fetchWeather({ latitude: 52.232, longitude: 21.0067 });
         } catch (error) {
-          console.log(error);
+          alert(error);
         }
       } finally {
         setIsLoading(false);

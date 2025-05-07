@@ -37,8 +37,7 @@ const Main = () => {
   if (isLoading) return <Loader />;
 
   if (!weatherData) {
-    console.log('No data available');
-    return null;
+    throw new Error('No weather data');
   }
 
   const { current, daily, hourly } = weatherData;
