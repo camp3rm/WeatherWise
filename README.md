@@ -22,12 +22,16 @@ An interactive weather dashboard built with React. It provides users with curren
 ## 🚀 Future Features / Improvements:
 🔧 **Modal Window and Error Handling**  
 Display user-friendly error messages (e.g., API downtime, invalid input).  
+
 ⏳ **Loader Near Input Field**  
 Add a spinner or loading animation during API fetch to improve feedback.  
+
 🧩 **React Suspense for Code Splitting**  
 Optimize performance by lazy-loading components with React Suspense.  
+
 📊 **Temperature and Precipitation Charts**  
 Integrate Chart.js or Recharts to visualize weather trends interactively.  
+
 
 ## How to run the application:
 
