@@ -47,7 +47,7 @@ Integrate Chart.js or Recharts to visualize weather trends interactively.
     ```
     yarn start
     ```
- 3. Or follow the link:
+ 4. Or follow the link:
     ```bash
     Source `https://meteorix.netlify.app/`
     ```
