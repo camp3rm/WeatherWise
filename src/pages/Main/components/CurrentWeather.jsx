@@ -17,8 +17,8 @@ export const CurrentWeather = ({ current, daily, time, weekday }) => {
         <CloudinessLevel className={styles.clouds} cloudies={current.clouds} />
         <p className={styles.precipitation}>Chance of precipitation: {(daily[0].pop * 100).toFixed(0)}%</p>
 
-        <span className={styles.daily_rain}>Rain: {daily[0].rain ? daily[0].rain * 100 : 0} mm</span>
-        <span className={styles.daily_snow}>Snow: {daily[0].snow ? daily[0].snow * 100 : 0} mm</span>
+        <span className={styles.daily_rain}>Rain: {(daily[0].rain ? daily[0].rain * 100 : 0).toFixed(0)} mm</span>
+        <span className={styles.daily_snow}>Snow: {(daily[0].snow ? daily[0].snow * 100 : 0).toFixed(0)} mm</span>
       </div>
     </div>
   );
